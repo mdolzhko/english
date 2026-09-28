@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LessonNav } from "@/components/lesson-nav";
+import { RulesProvider } from "@/components/rules-context";
 import { StatusBadge } from "@/components/status-badge";
 import { formatLessonDate, getLesson, getLessonSlugs } from "@/lib/lessons";
 
@@ -69,7 +70,9 @@ export default async function LessonPage({
         <LessonNav sections={lesson.sections} />
 
         <div className="prose prose-zinc mt-10 max-w-none dark:prose-invert lg:mt-0">
-          <Content />
+          <RulesProvider rules={lesson.rules}>
+            <Content />
+          </RulesProvider>
         </div>
       </div>
     </article>

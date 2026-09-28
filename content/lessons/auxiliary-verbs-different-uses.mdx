@@ -10,30 +10,153 @@ export const metadata = {
 
 ## Topic
 
-Beyond forming tenses, auxiliary verbs carry several jobs in conversation. All of
-them reuse the auxiliary already present in the other person’s sentence — and if
-there is no auxiliary, *do / does / did* stands in for it.
+Auxiliary verbs do more than build tenses. In conversation they stand in for a
+verb phrase that has already been said, which is what makes short replies,
+agreement and question tags possible.
 
-**Echo questions** show interest or surprise: they repeat the auxiliary and keep
-the same polarity as the statement. *I had good marks.* → *Did you?* (no
-auxiliary in the statement, so *did*). *I wouldn’t do that.* → *Wouldn’t you?*
-(negative statement, negative echo).
+One rule sits under everything below: **reuse the auxiliary from the sentence
+you are responding to**, and if that sentence has none, use *do*, *does* or
+*did*.
 
-**Short answers** repeat the auxiliary from the question, not the main verb, and
-are never contracted in the positive. *Were they living in London?* → *Yes, they
-were.* *Is it OK?* → *Yes, it is* (not *yes, it’s*).
+<Rule id="agreeing" title="Agreeing with so and neither" hint="So / neither + auxiliary + subject — the auxiliary comes before the subject, and after neither it stays positive.">
 
-**Emphatic do** contradicts or insists, and is stressed in speech. *She doesn’t
-eat meat.* → *She **does** eat meat.* The main verb stays in the infinitive.
+Use **so + auxiliary + subject** to agree with an affirmative sentence, and
+**neither / nor + auxiliary + subject** to agree with a negative one. After
+*neither* the auxiliary is positive — *neither* already carries the negation.
 
-**Question tags** reverse the polarity of the statement: positive statement →
-negative tag, and the other way round. *We should finish, shouldn’t we?* /
-*You aren’t ready, are you?* Two patterns worth memorising separately: *Let’s ...*
-takes *shall we?*, and an imperative takes *will you?*
+- *I love jazz.* → *So do I.*
+- *Tom has already finished.* → *So has Gina.*
+- *I’m not going to accept the invitation.* → *Neither am I.*
+- *I can’t concentrate.* → *Nor can I.*
 
-**Neither / So** invert as well: *Neither have I*, *So am I* — auxiliary before
-the subject. Note that after *neither* the auxiliary is positive, because
-*neither* already carries the negation.
+<Chart
+  columns={["Affirmative statement", "So + auxiliary + subject"]}
+  note="Every reply here means “I am tired too.”"
+  rows={[
+    ["I [am] tired!", "So [am] I."],
+    ["I [like] studying.", "So [do] I."],
+    ["Ed [loves] music.", "So [does] Mary."],
+    ["I [was] at the office.", "So [was] I."],
+    ["You [were] late.", "So [were] you."],
+    ["I [went] to bed very late.", "So [did] I."],
+    ["Sally [has found] a job.", "So [has] Rachel."],
+    ["I [will be] late for class.", "So [will] I."],
+    ["Tom [can speak] French.", "So [can] Mary."],
+    ["You [should go] home.", "So [should] you."],
+  ]}
+/>
+
+<Chart
+  columns={["Negative statement", "Neither + auxiliary + subject"]}
+  note="Every reply here means “I am not tired either.”"
+  rows={[
+    ["I [am not] tired!", "Neither [am] I."],
+    ["I [don’t like] studying.", "Neither [do] I."],
+    ["Ed [doesn’t like] music.", "Neither [does] Mary."],
+    ["I [wasn’t] ready.", "Neither [was] I."],
+    ["You [weren’t] the best.", "Neither [were] you."],
+    ["I [didn’t go] to bed late.", "Neither [did] I."],
+    ["Sally [hasn’t called] yet.", "Neither [has] Bill."],
+    ["I [won’t be] at the office.", "Neither [will] I."],
+    ["Tom [can’t speak] French.", "Neither [can] Mary."],
+    ["You [shouldn’t be] here.", "Neither [should] you."],
+  ]}
+/>
+
+</Rule>
+
+<Rule id="disagreeing" title="Disagreeing" hint="Subject + auxiliary, with the polarity flipped from the statement you are answering.">
+
+Use **(Yes, / No,) + subject + auxiliary**. The auxiliary flips polarity: a
+positive statement gets a negative auxiliary, and the other way round.
+
+- *I’m not going to accept the invitation.* → *I am.*
+- *I didn’t like the food.* → *I did.*
+- *You will be here before midnight.* → *No, I won’t.*
+- *I couldn’t find the solution, but my wife could.*
+
+</Rule>
+
+<Rule id="avoiding-repetition" title="Avoiding repetition" hint="Reuse the auxiliary from the first part of the sentence; if it has none, use do or did.">
+
+An auxiliary can replace a whole verb phrase instead of repeating it. If the
+first part has an auxiliary, reuse it; if it has none, use *do* or *did*.
+
+- *I thought I had lost my keys, but I hadn’t.*
+- *Tom can play the guitar, and Tina can’t.*
+- *She has never had to face such difficulties, but I have.*
+- *She shares your opinion, but I don’t.*
+- *Some wanted to go on with the plan, but others didn’t.*
+
+</Rule>
+
+<Rule id="short-answers" title="Short answers" hint="Repeat the auxiliary from the question, and never contract it in the positive.">
+
+A short answer repeats the auxiliary from the question, not the main verb — and
+in the positive it is never contracted.
+
+- *Is it OK if we stay tonight?* → *Yes, it is.* (not *Yes, it’s*)
+- *Were they living in London?* → *Yes, they were.*
+
+</Rule>
+
+<Rule id="reply-questions" title="Reply questions" hint="Same auxiliary and the same polarity as the statement — do or did if it has none.">
+
+A reply question shows interest or surprise. It reuses the auxiliary of the
+sentence before it and **keeps the same polarity**: a positive statement gets a
+positive reply question, a negative one gets a negative reply question.
+
+- *Sarah hasn’t passed the exam.* → *Hasn’t she? I thought she would pass it.*
+- *I won’t be able to be there.* → *Won’t you? That’s a shame.*
+- *I can find the answer without a calculator.* → *Can you? That’s amazing!*
+- *She left without saying goodbye.* → *Did she? That’s very rude.*
+
+</Rule>
+
+<Rule id="emphasis" title="Emphasis" hint="Stress the auxiliary; present and past simple have none, so add do, does or did before the infinitive.">
+
+To insist or to contradict, stress the auxiliary. Present simple and past simple
+affirmatives have no auxiliary to stress, so *do*, *does* or *did* goes in front
+of the main verb, which stays in the infinitive.
+
+- *Why aren’t you going to the party?* → *I **am** going to the party.*
+- *Sally doesn’t speak Spanish.* → *She **does** speak Spanish. She lived in Spain for two years.*
+- *You didn’t say sorry.* → *I **did** say sorry, but he didn’t hear me.*
+
+</Rule>
+
+<Rule id="question-tags" title="Question tags" hint="Reverse the polarity, reuse the auxiliary, and use a personal pronoun as the subject.">
+
+A question tag asks for confirmation. It reverses the polarity of the statement,
+reuses its auxiliary (*do* or *did* if there is none), and always takes a
+personal pronoun as its subject.
+
+- *He is from Liverpool, isn’t he?*
+- *You don’t have a car, do you?*
+- *Lisa went by train, didn’t she?*
+
+Three tags break the pattern and are worth memorising on their own:
+
+- *I am a bad person, **aren’t I**?*
+- *Open the window, **will you**?* — requests
+- *Let’s go to the park, **shall we**?* — suggestions
+
+<Chart
+  labelColumn
+  columns={["", "Positive verb → negative tag", "Negative verb → positive tag"]}
+  rows={[
+    ["present be", "Your name [is] Pedro, [isn’t it]?", "She’s [never] late, [is she]?"],
+    ["present simple", "You [live] downstairs, [don’t you]?", "You [don’t live] here, [do you]?"],
+    ["past simple", "She [studied] biology, [didn’t she]?", "They [didn’t know], [did they]?"],
+    ["past continuous", "You [were] joking, [weren’t you]?", "You [weren’t] joking, [were you]?"],
+    ["present perfect", "You’ve [just called], [haven’t you]?", "You [haven’t finished], [have you]?"],
+    ["past perfect", "He [had arrived], [hadn’t he]?", "They [hadn’t arrived], [had they]?"],
+    ["will", "You’ll [be] fine here, [won’t you]?", "We [won’t finish], [will we]?"],
+    ["modal verb", "She [can speak] English, [can’t she]?", "You [shouldn’t yell], [should you]?"],
+  ]}
+/>
+
+</Rule>
 
 <Exercise
   id="exercise-1"
@@ -44,14 +167,14 @@ the subject. Note that after *neither* the auxiliary is positive, because
     <Item>
       <Turn speaker="A">I’ve never seen anything like this before.</Turn>
       <Turn speaker="B">
-        Neither <Gap answer="have" options={["have", "do", "are"]} /> I.
+        Neither <Gap rule="agreeing" answer="have" options={["have", "do", "are"]} /> I.
       </Turn>
     </Item>
 
     <Item>
       <Turn speaker="A">I had very good marks this term.</Turn>
       <Turn speaker="B">
-        <Gap answer="Did you" options={["Had you", "Did you", "You did"]} />?
+        <Gap rule="reply-questions" answer="Did you" options={["Had you", "Did you", "You did"]} />?
         That’s great!
       </Turn>
     </Item>
@@ -59,7 +182,7 @@ the subject. Note that after *neither* the auxiliary is positive, because
     <Item>
       <Turn speaker="A">
         Let’s go to the movies,{" "}
-        <Gap answer="shall we" options={["shall we", "don’t we", "won’t we"]} />?
+        <Gap rule="question-tags" answer="shall we" options={["shall we", "don’t we", "won’t we"]} />?
       </Turn>
       <Turn speaker="B">
         OK, and after the cinema we could go for a drink somewhere.
@@ -70,24 +193,20 @@ the subject. Note that after *neither* the auxiliary is positive, because
       <Turn speaker="A">
         She doesn’t eat meat; I think she is a vegetarian.
       </Turn>
-      <Turn speaker="B">
-        She{" "}
-        <Gap answer="does eat" options={["sure eats", "do eats", "does eat"]} />{" "}
-        meat, but not very often.
-      </Turn>
+      <Turn speaker="B">She <Gap rule="emphasis" answer="does eat" options={["sure eats", "do eats", "does eat"]} /> meat, but not very often.</Turn>
     </Item>
 
     <Item>
       <Turn speaker="A">
         She wants to buy a new house but he{" "}
-        <Gap answer="doesn’t" options={["doesn’t", "isn’t", "does"]} />.
+        <Gap rule="avoiding-repetition" answer="doesn’t" options={["doesn’t", "isn’t", "does"]} />.
       </Turn>
     </Item>
 
     <Item>
       <Turn speaker="A">
         We should finish before we leave,{" "}
-        <Gap answer="shouldn’t" options={["shouldn’t", "should", "don’t"]} /> we?
+        <Gap rule="question-tags" answer="shouldn’t" options={["shouldn’t", "should", "don’t"]} /> we?
       </Turn>
       <Turn speaker="B">Yes, we can’t leave until we finish.</Turn>
     </Item>
@@ -95,7 +214,7 @@ the subject. Note that after *neither* the auxiliary is positive, because
     <Item>
       <Turn speaker="A">I used to play rugby when I was younger.</Turn>
       <Turn speaker="B">
-        <Gap answer="Did you" options={["Had you", "Were you", "Did you"]} />? I
+        <Gap rule="reply-questions" answer="Did you" options={["Had you", "Were you", "Did you"]} />? I
         didn’t know that about you.
       </Turn>
     </Item>
@@ -105,25 +224,19 @@ the subject. Note that after *neither* the auxiliary is positive, because
         Were they living in London when he got the job overseas?
       </Turn>
       <Turn speaker="B">
-        Yes, they <Gap answer="were" options={["do", "did", "were"]} />.
+        Yes, they <Gap rule="short-answers" answer="were" options={["do", "did", "were"]} />.
       </Turn>
     </Item>
 
     <Item>
       <Turn speaker="A">I wouldn’t ever do that to him.</Turn>
-      <Turn speaker="B">
-        <Gap
-          answer="Wouldn’t you"
-          options={["Isn’t it", "Would you", "Wouldn’t you"]}
-        />
-        ? Well, that’s good to know.
-      </Turn>
+      <Turn speaker="B"><Gap rule="reply-questions" answer="Wouldn’t you" options={["Isn’t it", "Would you", "Wouldn’t you"]} />? Well, that’s good to know.</Turn>
     </Item>
 
     <Item>
       <Turn speaker="A">You didn’t do the dishes last night.</Turn>
       <Turn speaker="B">
-        I <Gap answer="did do" options={["did them", "was done", "did do"]} /> the
+        I <Gap rule="emphasis" answer="did do" options={["did them", "was done", "did do"]} /> the
         dishes; these aren’t the dishes from last night.
       </Turn>
     </Item>
@@ -137,117 +250,50 @@ the subject. Note that after *neither* the auxiliary is positive, because
 >
   <Items>
     <Item>
-      <Say speaker="A">
-        I love cheese, but my husband{" "}
-        <Gap
-          answer="doesn’t"
-          options={["isn’t", "don’t", "doesn’t like", "doesn’t"]}
-        />
-        . He hates it.
-      </Say>
+      <Turn speaker="A">I love cheese, but my husband <Gap rule="avoiding-repetition" answer="doesn’t" options={["isn’t", "don’t", "doesn’t like", "doesn’t"]} />. He hates it.</Turn>
     </Item>
 
     <Item>
-      <Say speaker="A">Is it OK if we stay tonight?</Say>{" "}
-      <Say speaker="B">
-        Yes,{" "}
-        <Gap answer="it is" options={["it is", "it’s", "you can", "you do"]} />.
-      </Say>
+      <Turn speaker="A">Is it OK if we stay tonight?</Turn>
+      <Turn speaker="B">Yes, <Gap rule="short-answers" answer="it is" options={["it is", "it’s", "you can", "you do"]} />.</Turn>
     </Item>
 
     <Item>
-      <Say speaker="A">I won’t say anything.</Say>{" "}
-      <Say speaker="B">
-        Neither{" "}
-        <Gap
-          answer="will I"
-          options={["won’t I", "will I", "do I", "won’t me"]}
-        />
-        .
-      </Say>
+      <Turn speaker="A">I won’t say anything.</Turn>
+      <Turn speaker="B">Neither <Gap rule="agreeing" answer="will I" options={["won’t I", "will I", "do I", "won’t me"]} />.</Turn>
     </Item>
 
     <Item>
-      <Say speaker="A">He’s very tired.</Say>{" "}
-      <Say speaker="B">
-        <Gap
-          answer="So is she"
-          options={["So she is", "So is her", "So is she", "So she does"]}
-        />
-        .
-      </Say>
+      <Turn speaker="A">He’s very tired.</Turn>
+      <Turn speaker="B"><Gap rule="agreeing" answer="So is she" options={["So she is", "So is her", "So is she", "So she does"]} />.</Turn>
     </Item>
 
     <Item>
-      <Say speaker="A">You didn’t lock the door.</Say>{" "}
-      <Say speaker="B">
-        I{" "}
-        <Gap
-          answer="did lock"
-          options={["did locked", "did lock", "so locked", "yes locked"]}
-        />{" "}
-        the door.
-      </Say>
+      <Turn speaker="A">You didn’t lock the door.</Turn>
+      <Turn speaker="B">I <Gap rule="emphasis" answer="did lock" options={["did locked", "did lock", "so locked", "yes locked"]} /> the door.</Turn>
     </Item>
 
     <Item>
-      <Say speaker="A">
-        You aren’t ready yet,{" "}
-        <Gap
-          answer="are you"
-          options={["isn’t it", "aren’t you", "is it", "are you"]}
-        />
-        ?
-      </Say>{" "}
-      <Say speaker="B">
-        No, I<Gap answer="’m not" options={["am", "’m not"]} />.
-      </Say>
+      <Turn speaker="A">You aren’t ready yet, <Gap rule="question-tags" answer="are you" options={["isn’t it", "aren’t you", "is it", "are you"]} />?</Turn>
+      <Turn speaker="B">No, I<Gap rule="short-answers" answer="’m not" options={["am", "’m not"]} />.</Turn>
     </Item>
 
     <Item>
-      <Say speaker="A">
-        Pass me that pen,{" "}
-        <Gap
-          answer="will you"
-          options={["will you", "don’t you", "won’t you", "shall you"]}
-        />
-        ?
-      </Say>
+      <Turn speaker="A">Pass me that pen, <Gap rule="question-tags" answer="will you" options={["will you", "don’t you", "won’t you", "shall you"]} />?</Turn>
     </Item>
 
     <Item>
-      <Say speaker="A">You never listen to me.</Say>{" "}
-      <Say speaker="B">
-        I{" "}
-        <Gap
-          answer="do listen"
-          options={["can listen", "am listen", "yes listen", "do listen"]}
-        />{" "}
-        to you, why would you say that?
-      </Say>
+      <Turn speaker="A">You never listen to me.</Turn>
+      <Turn speaker="B">I <Gap rule="emphasis" answer="do listen" options={["can listen", "am listen", "yes listen", "do listen"]} /> to you, why would you say that?</Turn>
     </Item>
 
     <Item>
-      <Say speaker="A">I love romantic comedies.</Say>{" "}
-      <Say speaker="B">
-        I{" "}
-        <Gap
-          answer="don’t"
-          options={["don’t", "’m not", "don’t like", "wouldn’t"]}
-        />
-        .
-      </Say>
+      <Turn speaker="A">I love romantic comedies.</Turn>
+      <Turn speaker="B">I <Gap rule="disagreeing" answer="don’t" options={["don’t", "’m not", "don’t like", "wouldn’t"]} />.</Turn>
     </Item>
 
     <Item>
-      <Say speaker="A">
-        I thought I had set the alarm, but{" "}
-        <Gap
-          answer="I hadn’t"
-          options={["It wasn’t", "I hadn’t", "hadn’t I", "it isn’t"]}
-        />
-        .
-      </Say>
+      <Turn speaker="A">I thought I had set the alarm, but <Gap rule="avoiding-repetition" answer="I hadn’t" options={["It wasn’t", "I hadn’t", "hadn’t I", "it isn’t"]} />.</Turn>
     </Item>
   </Items>
 </Exercise>

@@ -19,10 +19,14 @@ export type LessonMeta = {
 /** One entry in a lesson's side navigation. */
 export type LessonSection = { id: string; title: string };
 
+/** A rule from the lesson notes, in the short form a gap shows. */
+export type LessonRule = { id: string; title: string; hint: string };
+
 export type Lesson = LessonMeta & { slug: string };
 export type LessonWithContent = Lesson & {
   Content: ComponentType;
   sections: LessonSection[];
+  rules: Record<string, LessonRule>;
 };
 
 type LessonModule = { default: ComponentType; metadata: LessonMeta };
@@ -75,6 +79,28 @@ function getSections(slug: string): LessonSection[] {
     .map(({ id, title }) => ({ id, title }));
 }
 
+/**
+ * The lesson's rules, read from the .mdx source the same way the sections are,
+ * so a gap can name a rule and get its wording without the content file
+ * repeating itself.
+ */
+function getRules(slug: string): Record<string, LessonRule> {
+  const source = fs.readFileSync(path.join(LESSONS_DIR, `${slug}.mdx`), "utf8");
+  const rules: Record<string, LessonRule> = {};
+
+  for (const match of source.matchAll(/<Rule\b([^>]*)>/g)) {
+    const attributes = match[1];
+    const read = (name: string) =>
+      new RegExp(`\\b${name}="([^"]*)"`).exec(attributes)?.[1];
+
+    const id = read("id");
+    const title = read("title");
+    if (id && title) rules[id] = { id, title, hint: read("hint") ?? "" };
+  }
+
+  return rules;
+}
+
 /** All lessons, newest first. Metadata only — no content compiled. */
 export async function getLessons(): Promise<Lesson[]> {
   const lessons = await Promise.all(
@@ -91,7 +117,13 @@ export async function getLesson(slug: string): Promise<LessonWithContent | null>
   // Also guards the dynamic import against arbitrary slugs.
   if (!getLessonSlugs().includes(slug)) return null;
   const { default: Content, metadata } = await importLesson(slug);
-  return { slug, ...metadata, Content, sections: getSections(slug) };
+  return {
+    slug,
+    ...metadata,
+    Content,
+    sections: getSections(slug),
+    rules: getRules(slug),
+  };
 }
 
 export function formatLessonDate(date: string): string {

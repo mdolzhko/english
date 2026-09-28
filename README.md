@@ -49,6 +49,32 @@ What the teacher asked for.
 No imports needed — `Gap`, `Exercise`, `Item` and `Turn` are registered
 globally in `mdx-components.tsx`.
 
+## Keep each `<Gap>` on one line
+
+Write a gap inline with the text around it, on a single physical line:
+
+```mdx
+<Turn speaker="B">Neither <Gap answer="will I" options={["won’t I", "will I", "do I", "won’t me"]} />.</Turn>
+```
+
+Never break it across lines:
+
+```mdx
+<Turn speaker="B">
+  Neither{" "}
+  <Gap
+    answer="will I"
+    options={["won’t I", "will I", "do I", "won’t me"]}
+  />
+  .
+</Turn>
+```
+
+MDX treats a JSX tag that occupies a whole line by itself as a block, and a
+block ends the paragraph — so the sentence renders split over three lines
+instead of one. A trailing `{" "}` on the tag's line does not prevent it.
+Lines get long, which is the price of the rule.
+
 ## Why `<Gap>` carries `options`
 
 Right now a gap renders as the filled-in answer and the site has no state at

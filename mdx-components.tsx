@@ -1,6 +1,8 @@
 import type { MDXComponents } from "mdx/types";
 import { Gap } from "@/components/gap";
-import { Dialogue, Exercise, Item, Items, Say, Turn } from "@/components/exercise";
+import { Dialogue, Exercise, Item, Items, Turn } from "@/components/exercise";
+import { Chart } from "@/components/chart";
+import { Rule } from "@/components/rule";
 
 /**
  * Components available inside every .mdx lesson without an import.
@@ -8,12 +10,13 @@ import { Dialogue, Exercise, Item, Items, Say, Turn } from "@/components/exercis
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     Gap,
+    Chart,
+    Rule,
     Exercise,
     Items,
     Item,
     Dialogue,
     Turn,
-    Say,
     ...components,
   };
 }
