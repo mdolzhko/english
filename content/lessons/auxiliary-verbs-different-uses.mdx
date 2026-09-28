@@ -4,123 +4,309 @@ export const metadata = {
   topic: "Grammar",
   status: "done",
   tags: ["auxiliary-verbs", "echo-questions", "question-tags", "emphatic-do"],
-  source: "",
+  source:
+    "https://test-english.com/grammar-points/b1-b2/auxiliary-verbs-different-uses/",
 };
 
 ## Topic
 
-Beyond forming tenses, auxiliary verbs carry four jobs in conversation. All of
-them reuse the auxiliary already present in the other person's sentence — and if
+Beyond forming tenses, auxiliary verbs carry several jobs in conversation. All of
+them reuse the auxiliary already present in the other person’s sentence — and if
 there is no auxiliary, *do / does / did* stands in for it.
 
 **Echo questions** show interest or surprise: they repeat the auxiliary and keep
 the same polarity as the statement. *I had good marks.* → *Did you?* (no
-auxiliary in the statement, so *did*). *I wouldn't do that.* → *Wouldn't you?*
+auxiliary in the statement, so *did*). *I wouldn’t do that.* → *Wouldn’t you?*
 (negative statement, negative echo).
 
-**Short answers** repeat the auxiliary from the question, not the main verb.
-*Were they living in London?* → *Yes, they were.*
+**Short answers** repeat the auxiliary from the question, not the main verb, and
+are never contracted in the positive. *Were they living in London?* → *Yes, they
+were.* *Is it OK?* → *Yes, it is* (not *yes, it’s*).
 
-**Emphatic do** contradicts or insists, and is stressed in speech. *She doesn't
+**Emphatic do** contradicts or insists, and is stressed in speech. *She doesn’t
 eat meat.* → *She **does** eat meat.* The main verb stays in the infinitive.
 
 **Question tags** reverse the polarity of the statement: positive statement →
-negative tag. *We should finish, shouldn't we?* One exception worth memorising:
-*Let's ...* always takes *shall we?*
+negative tag, and the other way round. *We should finish, shouldn’t we?* /
+*You aren’t ready, are you?* Two patterns worth memorising separately: *Let’s ...*
+takes *shall we?*, and an imperative takes *will you?*
 
-**Neither / So** invert as well: *Neither have I*, *So do I* — auxiliary before
-the subject.
+**Neither / So** invert as well: *Neither have I*, *So am I* — auxiliary before
+the subject. Note that after *neither* the auxiliary is positive, because
+*neither* already carries the negation.
 
-## Task
+<Exercise
+  id="exercise-1"
+  title="Exercise 1"
+  instruction="Choose the correct option to complete the sentences below."
+>
+  <Items>
+    <Item>
+      <Turn speaker="A">I’ve never seen anything like this before.</Turn>
+      <Turn speaker="B">
+        Neither <Gap answer="have" options={["have", "do", "are"]} /> I.
+      </Turn>
+    </Item>
 
-Choose the correct option to complete the sentences below.
+    <Item>
+      <Turn speaker="A">I had very good marks this term.</Turn>
+      <Turn speaker="B">
+        <Gap answer="Did you" options={["Had you", "Did you", "You did"]} />?
+        That’s great!
+      </Turn>
+    </Item>
 
-## My answers
+    <Item>
+      <Turn speaker="A">
+        Let’s go to the movies,{" "}
+        <Gap answer="shall we" options={["shall we", "don’t we", "won’t we"]} />?
+      </Turn>
+      <Turn speaker="B">
+        OK, and after the cinema we could go for a drink somewhere.
+      </Turn>
+    </Item>
 
-<Exercise>
-  <Item>
-    <Turn speaker="A">I've never seen anything like this before.</Turn>
-    <Turn speaker="B">
-      Neither <Gap answer="have" options={["have", "do", "are"]} /> I.
+    <Item>
+      <Turn speaker="A">
+        She doesn’t eat meat; I think she is a vegetarian.
+      </Turn>
+      <Turn speaker="B">
+        She{" "}
+        <Gap answer="does eat" options={["sure eats", "do eats", "does eat"]} />{" "}
+        meat, but not very often.
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">
+        She wants to buy a new house but he{" "}
+        <Gap answer="doesn’t" options={["doesn’t", "isn’t", "does"]} />.
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">
+        We should finish before we leave,{" "}
+        <Gap answer="shouldn’t" options={["shouldn’t", "should", "don’t"]} /> we?
+      </Turn>
+      <Turn speaker="B">Yes, we can’t leave until we finish.</Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">I used to play rugby when I was younger.</Turn>
+      <Turn speaker="B">
+        <Gap answer="Did you" options={["Had you", "Were you", "Did you"]} />? I
+        didn’t know that about you.
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">
+        Were they living in London when he got the job overseas?
+      </Turn>
+      <Turn speaker="B">
+        Yes, they <Gap answer="were" options={["do", "did", "were"]} />.
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">I wouldn’t ever do that to him.</Turn>
+      <Turn speaker="B">
+        <Gap
+          answer="Wouldn’t you"
+          options={["Isn’t it", "Would you", "Wouldn’t you"]}
+        />
+        ? Well, that’s good to know.
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">You didn’t do the dishes last night.</Turn>
+      <Turn speaker="B">
+        I <Gap answer="did do" options={["did them", "was done", "did do"]} /> the
+        dishes; these aren’t the dishes from last night.
+      </Turn>
+    </Item>
+  </Items>
+</Exercise>
+
+<Exercise
+  id="exercise-2"
+  title="Exercise 2"
+  instruction="Choose the correct option for the sentences below."
+>
+  <Items>
+    <Item>
+      <Turn>
+        I love cheese, but my husband{" "}
+        <Gap
+          answer="doesn’t"
+          options={["isn’t", "don’t", "doesn’t like", "doesn’t"]}
+        />
+        . He hates it.
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">Is it OK if we stay tonight?</Turn>
+      <Turn speaker="B">
+        Yes, <Gap answer="it is" options={["it is", "it’s", "you can", "you do"]} />
+        .
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">I won’t say anything.</Turn>
+      <Turn speaker="B">
+        Neither{" "}
+        <Gap
+          answer="will I"
+          options={["won’t I", "will I", "do I", "won’t me"]}
+        />
+        .
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">He’s very tired.</Turn>
+      <Turn speaker="B">
+        <Gap
+          answer="So is she"
+          options={["So she is", "So is her", "So is she", "So she does"]}
+        />
+        .
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">You didn’t lock the door.</Turn>
+      <Turn speaker="B">
+        I{" "}
+        <Gap
+          answer="did lock"
+          options={["did locked", "did lock", "so locked", "yes locked"]}
+        />{" "}
+        the door.
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">
+        You aren’t ready yet,{" "}
+        <Gap
+          answer="are you"
+          options={["isn’t it", "aren’t you", "is it", "are you"]}
+        />
+        ?
+      </Turn>
+      <Turn speaker="B">
+        No, I <Gap answer="’m not" options={["am", "’m not"]} />.
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">
+        Pass me that pen,{" "}
+        <Gap
+          answer="will you"
+          options={["will you", "don’t you", "won’t you", "shall you"]}
+        />
+        ?
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">You never listen to me.</Turn>
+      <Turn speaker="B">
+        I{" "}
+        <Gap
+          answer="do listen"
+          options={["can listen", "am listen", "yes listen", "do listen"]}
+        />{" "}
+        to you, why would you say that?
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn speaker="A">I love romantic comedies.</Turn>
+      <Turn speaker="B">
+        I{" "}
+        <Gap
+          answer="don’t"
+          options={["don’t", "’m not", "don’t like", "wouldn’t"]}
+        />
+        .
+      </Turn>
+    </Item>
+
+    <Item>
+      <Turn>
+        I thought I had set the alarm, but{" "}
+        <Gap
+          answer="I hadn’t"
+          options={["It wasn’t", "I hadn’t", "hadn’t I", "it isn’t"]}
+        />
+        .
+      </Turn>
+    </Item>
+  </Items>
+</Exercise>
+
+<Exercise
+  id="exercise-3"
+  title="Exercise 3"
+  instruction="Complete the sentences with the correct auxiliary verbs in the correct form."
+  example="You arrived very late last night, didn’t you?"
+>
+  <Dialogue>
+    <Turn speaker="JOHN">
+      So, Robert, you have just arrived at our university,{" "}
+      <Gap n={1} answer="haven’t" /> you?
     </Turn>
-  </Item>
 
-  <Item>
-    <Turn speaker="A">I had very good marks this term.</Turn>
-    <Turn speaker="B">
-      <Gap answer="Did you" options={["Had you", "Did you", "You did"]} />?
-      That&rsquo;s great!
-    </Turn>
-  </Item>
+    <Turn speaker="ROBERT">Yes. Today is my first day.</Turn>
 
-  <Item>
-    <Turn speaker="A">
-      Let&rsquo;s go to the movies,{" "}
-      <Gap answer="shall we" options={["shall we", "don't we", "won't we"]} />?
-    </Turn>
-    <Turn speaker="B">
-      OK, and after the cinema we could go for a drink somewhere.
-    </Turn>
-  </Item>
+    <Turn speaker="JOHN">And where are you from?</Turn>
 
-  <Item>
-    <Turn speaker="A">
-      She doesn&rsquo;t eat meat; I think she is a vegetarian.
-    </Turn>
-    <Turn speaker="B">
-      She <Gap answer="does eat" options={["sure eats", "do eats", "does eat"]} />{" "}
-      meat, but not very often.
-    </Turn>
-  </Item>
+    <Turn speaker="ROBERT">I live in Leeds, but I was born in Poland.</Turn>
 
-  <Item>
-    <Turn speaker="A">
-      She wants to buy a new house but he{" "}
-      <Gap answer="doesn't" options={["doesn't", "isn't", "does"]} />.
+    <Turn speaker="JOHN">
+      <Gap n={2} answer="Were" /> you? That’s funny. So{" "}
+      <Gap n={3} answer="was" /> my girlfriend.
     </Turn>
-  </Item>
 
-  <Item>
-    <Turn speaker="A">
-      We should finish before we leave,{" "}
-      <Gap answer="shouldn't" options={["shouldn't", "should", "don't"]} /> we?
+    <Turn speaker="ROBERT">
+      <Gap n={4} answer="Was" /> she? Where in Poland was she born?
     </Turn>
-    <Turn speaker="B">Yes, we can&rsquo;t leave until we finish.</Turn>
-  </Item>
 
-  <Item>
-    <Turn speaker="A">I used to play rugby when I was younger.</Turn>
-    <Turn speaker="B">
-      <Gap answer="Did you" options={["Had you", "Were you", "Did you"]} />? I
-      didn&rsquo;t know that about you.
-    </Turn>
-  </Item>
+    <Turn speaker="JOHN">She’s from a city called Lublin.</Turn>
 
-  <Item>
-    <Turn speaker="A">
-      Were they living in London when he got the job overseas?
+    <Turn speaker="ROBERT">
+      <Gap n={5} answer="Is" /> she? So <Gap n={6} answer="am" /> I!
     </Turn>
-    <Turn speaker="B">
-      Yes, they <Gap answer="were" options={["do", "did", "were"]} />.
-    </Turn>
-  </Item>
 
-  <Item>
-    <Turn speaker="A">I wouldn&rsquo;t ever do that to him.</Turn>
-    <Turn speaker="B">
-      <Gap
-        answer="Wouldn't you"
-        options={["Isn't it", "Would you", "Wouldn't you"]}
-      />
-      ? Well, that&rsquo;s good to know.
+    <Turn speaker="JOHN">
+      That’s a coincidence, <Gap n={7} answer="isn’t" /> it?
     </Turn>
-  </Item>
 
-  <Item>
-    <Turn speaker="A">You didn&rsquo;t do the dishes last night.</Turn>
-    <Turn speaker="B">
-      I <Gap answer="did do" options={["did them", "was done", "did do"]} /> the
-      dishes; these aren&rsquo;t the dishes from last night.
+    <Turn speaker="ROBERT">
+      Yes, it is. And have you learnt any Polish?
     </Turn>
-  </Item>
+
+    <Turn speaker="JOHN">
+      No. My girlfriend speaks Polish, but I <Gap n={8} answer="don’t" />.
+    </Turn>
+
+    <Turn speaker="ROBERT">
+      Neither do I. Well, I <Gap n={9} answer="do" /> speak a little Polish, but
+      not much. We came to England when I was just two years old. Anyway, are you
+      hungry? Would you like to eat something at the canteen?
+    </Turn>
+
+    <Turn speaker="JOHN">
+      Yes, sure. Let’s have some lunch, <Gap n={10} answer="shall" /> we?
+    </Turn>
+
+    <Turn speaker="ROBERT">Yes, that’s a good idea!</Turn>
+  </Dialogue>
 </Exercise>

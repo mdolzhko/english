@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { LessonNav } from "@/components/lesson-nav";
 import { StatusBadge } from "@/components/status-badge";
 import { formatLessonDate, getLesson, getLessonSlugs } from "@/lib/lessons";
 
@@ -35,7 +36,7 @@ export default async function LessonPage({
         ← All lessons
       </Link>
 
-      <header className="mt-8">
+      <header className="mt-8 max-w-3xl">
         <div className="flex items-center gap-3 text-xs text-zinc-500">
           <time dateTime={lesson.date}>{formatLessonDate(lesson.date)}</time>
           <span aria-hidden>·</span>
@@ -51,21 +52,25 @@ export default async function LessonPage({
 
         {lesson.source && (
           <p className="mt-3 text-xs text-zinc-500">
-            Original exercise:{" "}
+            Original exercises:{" "}
             <a
               href={lesson.source}
               className="underline underline-offset-2"
               target="_blank"
               rel="noreferrer noopener"
             >
-              {lesson.source}
+              test-english.com
             </a>
           </p>
         )}
       </header>
 
-      <div className="prose prose-zinc mt-10 max-w-none dark:prose-invert">
-        <Content />
+      <div className="mt-12 gap-12 lg:grid lg:grid-cols-[11rem_minmax(0,1fr)]">
+        <LessonNav sections={lesson.sections} />
+
+        <div className="prose prose-zinc mt-10 max-w-none dark:prose-invert lg:mt-0">
+          <Content />
+        </div>
       </div>
     </article>
   );

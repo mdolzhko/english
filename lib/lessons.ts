@@ -16,8 +16,14 @@ export type LessonMeta = {
   source?: string;
 };
 
+/** One entry in a lesson's side navigation. */
+export type LessonSection = { id: string; title: string };
+
 export type Lesson = LessonMeta & { slug: string };
-export type LessonWithContent = Lesson & { Content: ComponentType };
+export type LessonWithContent = Lesson & {
+  Content: ComponentType;
+  sections: LessonSection[];
+};
 
 type LessonModule = { default: ComponentType; metadata: LessonMeta };
 
@@ -33,6 +39,40 @@ export function getLessonSlugs(): string[] {
 
 async function importLesson(slug: string): Promise<LessonModule> {
   return (await import(`../content/lessons/${slug}.mdx`)) as LessonModule;
+}
+
+/** Same slug rehype-slug derives from a heading, for the headings we use. */
+function slugify(heading: string): string {
+  return heading
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
+/**
+ * Side navigation for a lesson, read straight from the .mdx source so it
+ * cannot drift out of sync with the content: every `## heading` and every
+ * `<Exercise id title>`, in the order they appear in the file.
+ */
+function getSections(slug: string): LessonSection[] {
+  const source = fs.readFileSync(path.join(LESSONS_DIR, `${slug}.mdx`), "utf8");
+  const found: Array<LessonSection & { at: number }> = [];
+
+  for (const match of source.matchAll(/^## +(.+?)\s*$/gm)) {
+    const title = match[1];
+    found.push({ id: slugify(title), title, at: match.index });
+  }
+
+  for (const match of source.matchAll(
+    /<Exercise\b[^>]*?\bid="([^"]+)"[^>]*?\btitle="([^"]+)"/g,
+  )) {
+    found.push({ id: match[1], title: match[2], at: match.index });
+  }
+
+  return found
+    .sort((a, b) => a.at - b.at)
+    .map(({ id, title }) => ({ id, title }));
 }
 
 /** All lessons, newest first. Metadata only — no content compiled. */
@@ -51,7 +91,7 @@ export async function getLesson(slug: string): Promise<LessonWithContent | null>
   // Also guards the dynamic import against arbitrary slugs.
   if (!getLessonSlugs().includes(slug)) return null;
   const { default: Content, metadata } = await importLesson(slug);
-  return { slug, ...metadata, Content };
+  return { slug, ...metadata, Content, sections: getSections(slug) };
 }
 
 export function formatLessonDate(date: string): string {
