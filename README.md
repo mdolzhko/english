@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# English Lessons
 
-## Getting Started
+Lesson topics and completed homework, as a static site.
 
-First, run the development server:
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm dev     # http://localhost:3000
+pnpm build   # static build, one prerendered page per lesson
+pnpm lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Adding a lesson
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Drop one file into `content/lessons/`. The filename becomes the URL
+(`content/lessons/my-lesson.mdx` → `/lessons/my-lesson`), and `date` in the
+metadata decides the order on the home page.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```mdx
+export const metadata = {
+  title: "Auxiliary verbs: Different uses",
+  date: "2026-09-29",          // YYYY-MM-DD
+  topic: "Grammar",
+  status: "done",              // todo | in-progress | done
+  tags: ["auxiliary-verbs"],
+  source: "",                  // link to the original exercise, optional
+};
 
-## Learn More
+## Topic
 
-To learn more about Next.js, take a look at the following resources:
+Notes from the lesson.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Task
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+What the teacher asked for.
 
-## Deploy on Vercel
+## My answers
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<Exercise>
+  <Item>
+    <Turn speaker="A">I've never seen anything like this before.</Turn>
+    <Turn speaker="B">
+      Neither <Gap answer="have" options={["have", "do", "are"]} /> I.
+    </Turn>
+  </Item>
+</Exercise>
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+No imports needed — `Gap`, `Exercise`, `Item` and `Turn` are registered
+globally in `mdx-components.tsx`.
+
+## Why `<Gap>` carries `options`
+
+Right now a gap renders as the filled-in answer and the site has no state at
+all. `options` is the full list the original exercise offered, stored so that
+the interactive version — a real `<select>` per gap, answers kept across
+sessions, and a shareable link that shows the teacher what was chosen — can be
+built without touching a single content file.
+
+## Layout
+
+| Path | Role |
+| --- | --- |
+| `content/lessons/*.mdx` | the lessons |
+| `lib/lessons.ts` | reads and sorts them from the filesystem |
+| `components/gap.tsx` | one blank in a cloze exercise |
+| `components/exercise.tsx` | numbered items and dialogue turns |
+| `app/page.tsx` | lesson list |
+| `app/lessons/[slug]/page.tsx` | one lesson |
