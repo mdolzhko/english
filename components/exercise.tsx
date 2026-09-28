@@ -75,6 +75,25 @@ export function Dialogue({ children }: { children: ReactNode }) {
   );
 }
 
+/**
+ * Inline speaker label, for exercises whose source keeps both turns of an
+ * exchange on one line. {@link Turn} is the block equivalent.
+ */
+export function Say({
+  speaker,
+  children,
+}: {
+  speaker: string;
+  children: ReactNode;
+}) {
+  return (
+    <span>
+      <span className="font-mono text-sm text-zinc-400">{speaker}:</span>{" "}
+      {children}
+    </span>
+  );
+}
+
 /** One line of dialogue, or a plain sentence when there is no speaker. */
 export function Turn({
   speaker,
