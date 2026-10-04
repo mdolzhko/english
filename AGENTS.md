@@ -106,6 +106,13 @@ Updated at the end of a session that changes it. Last: 2026-10-04.
 - Not deployed. When it is: Vercel from the browser under the personal
   account — the local CLI is logged into the work account.
 
+## Ideas for later
+
+Live as GitHub Issues with the `idea` label (`gh issue list --label idea`),
+not as files in this tree: a thought for the future should not need a commit
+to change. Each names its trigger — the condition under which it becomes
+worth building.
+
 ## Known debt
 
 Reviewed and left alone on purpose. Fix each when its trigger arrives, not
