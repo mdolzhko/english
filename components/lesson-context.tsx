@@ -18,7 +18,7 @@ const LessonContext = createContext<LessonContextValue>({
  * in the MDX tree it sits — a gap only carries a rule id, not the text, and
  * decides from the status whether to open on its answer or blank.
  */
-export function RulesProvider({
+export function LessonProvider({
   rules,
   status = "done",
   children,

@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 import { highlight, MARK } from "./highlight";
 import { RuleNote } from "./rule-note";
-import { useRule } from "./rules-context";
+import { useRule } from "./lesson-context";
 
 type Mode = "both" | "practice";
 

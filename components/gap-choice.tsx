@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { EMPTY, PENDING, RIGHT, WRONG } from "./gap-styles";
 import { RuleNote } from "./rule-note";
-import { useLessonStatus, useRule } from "./rules-context";
+import { useLessonStatus, useRule } from "./lesson-context";
 
 /**
  * A gap the original exercise offered a choice for.

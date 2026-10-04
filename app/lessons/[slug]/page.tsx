@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LessonNav } from "@/components/lesson-nav";
 import { LessonSummary } from "@/components/lesson-summary";
-import { RulesProvider } from "@/components/rules-context";
+import { LessonProvider } from "@/components/lesson-context";
 import { StatusBadge } from "@/components/status-badge";
 import { formatLessonDate, getLesson, getLessonSlugs } from "@/lib/lessons";
 
@@ -83,9 +83,9 @@ export default async function LessonPage({
           <div
             className={`topics prose max-w-none ${lesson.topics.length > 0 ? "mt-10" : ""}`}
           >
-            <RulesProvider rules={lesson.rules} status={lesson.status}>
+            <LessonProvider rules={lesson.rules} status={lesson.status}>
               <Content />
-            </RulesProvider>
+            </LessonProvider>
           </div>
         </div>
       </div>
