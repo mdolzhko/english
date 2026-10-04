@@ -12,6 +12,7 @@ export function Exercise({
   topicId,
   instruction,
   example,
+  source,
   children,
 }: {
   id: string;
@@ -22,6 +23,8 @@ export function Exercise({
   topicId?: string;
   instruction?: string;
   example?: string;
+  /** Where the exercise was taken from, when it was not written here. */
+  source?: string;
   children: ReactNode;
 }) {
   return (
@@ -43,6 +46,20 @@ export function Exercise({
       {instruction && (
         <p className="mt-1 text-sm text-muted">
           {instruction}
+        </p>
+      )}
+
+      {source && (
+        <p className="mt-1 font-mono text-xs text-faint">
+          from{" "}
+          <a
+            href={source}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-accent underline underline-offset-2"
+          >
+            test-english.com
+          </a>
         </p>
       )}
 

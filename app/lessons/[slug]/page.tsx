@@ -83,7 +83,7 @@ export default async function LessonPage({
           <div
             className={`topics prose max-w-none ${lesson.topics.length > 0 ? "mt-10" : ""}`}
           >
-            <RulesProvider rules={lesson.rules}>
+            <RulesProvider rules={lesson.rules} status={lesson.status}>
               <Content />
             </RulesProvider>
           </div>

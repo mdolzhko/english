@@ -50,6 +50,18 @@ What the teacher asked for.
 No imports needed — `Gap`, `Exercise`, `Item` and `Turn` are registered
 globally in `mdx-components.tsx`.
 
+## A lesson that is still to do
+
+Give it `status: "todo"` or `"in-progress"`. In a lesson that is not `done`
+every `<Gap>` with `options` starts blank, whatever its `answer`, so it can be
+tried first: a right pick turns green, a wrong one red with the rule's hint.
+Set the status to `done` and the same gaps open on their answers, as finished
+homework. `answer` may be a list when the original accepts more than one
+option. A gap with no `answer` at all can be picked but is never marked, and
+a gap with no options and no answer is a plain blank. An `<Exercise>` taken
+from somewhere else names the page in `source`, shown as a small link under
+the instruction.
+
 ## Keep each `<Gap>` on one line
 
 Write a gap inline with the text around it, on a single physical line:
