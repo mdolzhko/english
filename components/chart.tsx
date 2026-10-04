@@ -9,7 +9,7 @@ function highlight(text: string): ReactNode[] {
     part.startsWith("[") && part.endsWith("]") ? (
       <b
         key={index}
-        className="rounded bg-emerald-50 px-1 py-0.5 font-medium text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300"
+        className="rounded bg-good px-1 py-0.5 font-medium text-good-ink"
       >
         {part.slice(1, -1)}
       </b>
@@ -38,15 +38,15 @@ export function Chart({
 }) {
   return (
     <div className="not-prose my-6">
-      <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
+      <div className="overflow-x-auto rounded-lg border border-line bg-surface">
         <table className="w-full min-w-[32rem] border-collapse text-left text-sm">
           <thead>
-            <tr className="bg-zinc-50 dark:bg-zinc-900/60">
+            <tr className="bg-panel">
               {columns.map((column, index) => (
                 <th
                   key={column || index}
                   scope="col"
-                  className="px-4 py-2.5 text-xs font-medium uppercase tracking-wide text-zinc-500"
+                  className="eyebrow px-4 py-2.5"
                 >
                   {column}
                 </th>
@@ -57,14 +57,14 @@ export function Chart({
             {rows.map((row, rowIndex) => (
               <tr
                 key={rowIndex}
-                className="border-t border-zinc-200 dark:border-zinc-800"
+                className="border-t border-line"
               >
                 {row.map((cell, cellIndex) => (
                   <td
                     key={cellIndex}
                     className={
                       labelColumn && cellIndex === 0
-                        ? "whitespace-nowrap px-4 py-2.5 align-middle font-mono text-xs text-zinc-500"
+                        ? "whitespace-nowrap px-4 py-2.5 align-middle font-mono text-xs text-muted"
                         : "px-4 py-2.5 align-middle leading-relaxed"
                     }
                   >
@@ -77,7 +77,7 @@ export function Chart({
         </table>
       </div>
 
-      {note && <p className="mt-2 text-xs text-zinc-500">{note}</p>}
+      {note && <p className="mt-2 text-xs text-muted">{note}</p>}
     </div>
   );
 }

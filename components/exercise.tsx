@@ -19,20 +19,21 @@ export function Exercise({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="not-prose mt-14 scroll-mt-8 first:mt-0">
-      <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
+    <section
+      id={id}
+      className="not-prose mt-14 scroll-mt-8 rounded-lg border border-line bg-surface p-6 first:mt-0 sm:p-8"
+    >
+      <h2 className="font-display text-xl font-semibold tracking-tight">{title}</h2>
 
       {instruction && (
-        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+        <p className="mt-1 text-sm text-muted">
           {instruction}
         </p>
       )}
 
       {example && (
-        <p className="mt-3 border-l-2 border-zinc-200 pl-3 text-sm text-zinc-500 dark:border-zinc-700">
-          <span className="font-mono text-xs uppercase tracking-wide">
-            Example
-          </span>
+        <p className="mt-3 border-l-2 border-line pl-3 text-sm text-muted">
+          <span className="eyebrow">Example</span>
           <br />
           {example}
         </p>
@@ -47,7 +48,7 @@ export function Exercise({
 export function Items({ children }: { children: ReactNode }) {
   return (
     <ol
-      className="ml-6 list-decimal space-y-6 marker:font-mono marker:text-sm marker:text-zinc-400"
+      className="ml-6 list-decimal space-y-6 marker:font-mono marker:text-sm marker:text-faint"
       style={{ "--speaker-w": "1.25rem" } as CSSProperties}
     >
       {children}
@@ -90,7 +91,7 @@ export function Turn({
 
   return (
     <div className="flex gap-2 leading-relaxed">
-      <span className="w-[var(--speaker-w,1.25rem)] shrink-0 font-mono text-sm text-zinc-400">
+      <span className="w-[var(--speaker-w,1.25rem)] shrink-0 font-mono text-sm text-faint">
         {speaker}:
       </span>
       <div className="min-w-0">{children}</div>

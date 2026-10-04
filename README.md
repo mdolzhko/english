@@ -87,6 +87,7 @@ built without touching a single content file.
 
 | Path | Role |
 | --- | --- |
+| `app/globals.css` | the design tokens: colours for both themes, fonts, the `eyebrow` label |
 | `content/lessons/*.mdx` | the lessons |
 | `lib/lessons.ts` | reads and sorts them from the filesystem |
 | `components/gap.tsx` | one blank in a cloze exercise |

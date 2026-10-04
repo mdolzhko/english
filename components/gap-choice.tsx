@@ -33,7 +33,7 @@ export function GapChoice({
   return (
     <span className="relative inline-block">
       <span className={isWrong ? WRONG : RIGHT}>{picked}</span>
-      <span aria-hidden className="ml-0.5 text-[0.6rem] text-zinc-400">
+      <span aria-hidden className="ml-0.5 text-[0.6rem] text-faint">
         ▾
       </span>
 
@@ -55,7 +55,7 @@ export function GapChoice({
         // <div> inside this inline span would be invalid HTML.
         <span
           role="note"
-          className="absolute left-0 top-full z-20 mt-2 block w-max max-w-[min(20rem,calc(100vw-3rem))] rounded-lg border border-amber-200 bg-amber-50 p-3 text-left text-xs font-normal not-italic leading-relaxed text-amber-900 shadow-sm dark:border-amber-500/30 dark:bg-amber-950/60 dark:text-amber-100"
+          className="absolute left-0 top-full z-20 mt-2 block w-max max-w-[min(20rem,calc(100vw-3rem))] rounded-lg border border-warn-line bg-warn p-3 text-left text-xs font-normal not-italic leading-relaxed text-ink shadow-sm"
         >
           <span className="block font-medium">{rule.title}</span>
           {rule.hint && <span className="mt-1 block">{rule.hint}</span>}

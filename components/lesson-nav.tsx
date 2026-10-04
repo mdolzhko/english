@@ -44,10 +44,8 @@ export function LessonNav({ sections }: { sections: LessonSection[] }) {
       aria-label="On this page"
       className="lg:sticky lg:top-8 lg:self-start"
     >
-      <p className="font-mono text-xs uppercase tracking-wide text-zinc-400">
-        On this page
-      </p>
-      <ul className="mt-3 space-y-2 border-l border-zinc-200 dark:border-zinc-800">
+      <p className="eyebrow">On this page</p>
+      <ul className="mt-3 space-y-2 border-l border-line">
         {sections.map((section) => {
           const isActive = section.id === active;
           return (
@@ -57,8 +55,8 @@ export function LessonNav({ sections }: { sections: LessonSection[] }) {
                 aria-current={isActive ? "true" : undefined}
                 className={`-ml-px block border-l py-0.5 pl-4 text-sm transition ${
                   isActive
-                    ? "border-emerald-500 font-medium text-zinc-900 dark:text-zinc-100"
-                    : "border-transparent text-zinc-500 hover:border-zinc-300 hover:text-zinc-900 dark:hover:border-zinc-600 dark:hover:text-zinc-100"
+                    ? "border-accent font-medium text-ink"
+                    : "border-transparent text-muted hover:border-line-strong hover:text-ink"
                 }`}
               >
                 {section.title}

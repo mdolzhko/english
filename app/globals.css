@@ -1,27 +1,137 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/*
+  Design tokens. Every colour in the components goes through these, so the
+  dark theme is a second set of values here rather than `dark:` variants
+  scattered through the markup.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  color-scheme: light;
+  --ground: #f3f3f6;
+  --surface: #ffffff;
+  --panel: #f7f7fa;
+  --ink: #1d1c23;
+  --muted: #5d5a69;
+  --faint: #85828f;
+  --line: #e0dee7;
+  --line-strong: #c9c6d3;
+  --accent: #5b4bae;
+  --code: #efeef4;
+  --warn: #fff5d1;
+  --warn-line: #efd27b;
+  --warn-ink: #6b4e00;
+  --good: #ddf2e5;
+  --good-ink: #1b6b43;
+  --good-line: #b6e0c6;
+  --leak: #c6362f;
+  --leak-ink: #a52a24;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    color-scheme: dark;
+    --ground: #242424;
+    --surface: #2b2b2b;
+    --panel: #313131;
+    --ink: #e4e4e4;
+    --muted: #bbbbbb;
+    --faint: #999999;
+    --line: #373737;
+    --line-strong: #535353;
+    --accent: #9786db;
+    --code: #373737;
+    --warn: #413c2d;
+    --warn-line: #6d603b;
+    --warn-ink: #ffc000;
+    --good: #274837;
+    --good-ink: #7ed4a0;
+    --good-line: #36624b;
+    --leak: #f95252;
+    --leak-ink: #fd787a;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+@theme inline {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-panel: var(--panel);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-code: var(--code);
+  --color-warn: var(--warn);
+  --color-warn-line: var(--warn-line);
+  --color-warn-ink: var(--warn-ink);
+  --color-good: var(--good);
+  --color-good-ink: var(--good-ink);
+  --color-good-line: var(--good-line);
+  --color-leak: var(--leak);
+  --color-leak-ink: var(--leak-ink);
+
+  --font-sans: var(--font-plex-sans), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-plex-condensed), var(--font-plex-sans), "Arial Narrow", sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
+
+/* Small uppercase label above a block or a table column. */
+@utility eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.55;
+}
+
+:is(a, button, input, select):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Lesson text: the typography plugin, pointed at the tokens. */
+.prose {
+  --tw-prose-body: var(--ink);
+  --tw-prose-headings: var(--ink);
+  --tw-prose-lead: var(--muted);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--ink);
+  --tw-prose-counters: var(--faint);
+  --tw-prose-bullets: var(--line-strong);
+  --tw-prose-hr: var(--line);
+  --tw-prose-quotes: var(--ink);
+  --tw-prose-quote-borders: var(--line);
+  --tw-prose-captions: var(--muted);
+  --tw-prose-code: var(--ink);
+  --tw-prose-th-borders: var(--line-strong);
+  --tw-prose-td-borders: var(--line);
+}
+
+.prose :is(h2, h3) {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.prose code {
+  background: var(--code);
+  padding: 0 4px;
+  border-radius: 3px;
+  font-weight: 400;
+}
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+

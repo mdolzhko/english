@@ -27,7 +27,7 @@ export function Gap({ answer, options, n, rule }: GapProps) {
   return (
     <span>
       {n !== undefined && (
-        <sup className="mr-0.5 font-mono text-[0.6rem] text-zinc-400">{n}</sup>
+        <sup className="mr-0.5 font-mono text-[0.6rem] text-faint">{n}</sup>
       )}
       {options?.length ? (
         <GapChoice answer={answer} options={options} rule={rule} />

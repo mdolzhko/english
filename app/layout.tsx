@@ -1,16 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  IBM_Plex_Mono,
+  IBM_Plex_Sans,
+  IBM_Plex_Sans_Condensed,
+} from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const plexSans = IBM_Plex_Sans({
+  variable: "--font-plex-sans",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Headings only, so no Cyrillic needed.
+const plexCondensed = IBM_Plex_Sans_Condensed({
+  variable: "--font-plex-condensed",
   subsets: ["latin"],
+  weight: ["500", "600"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -27,12 +41,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${plexSans.variable} ${plexCondensed.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <header className="border-b border-zinc-200 dark:border-zinc-800">
+        <header className="border-b border-line">
           <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-5">
-            <Link href="/" className="text-sm font-semibold tracking-tight">
+            <Link href="/" className="font-display text-base font-semibold tracking-tight">
               English Lessons
             </Link>
           </div>
@@ -42,8 +56,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
 
-        <footer className="border-t border-zinc-200 px-6 py-6 dark:border-zinc-800">
-          <p className="mx-auto w-full max-w-5xl text-xs text-zinc-500">
+        <footer className="border-t border-line px-6 py-6">
+          <p className="mx-auto w-full max-w-5xl text-xs text-muted">
             Homework notebook.
           </p>
         </footer>
