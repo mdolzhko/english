@@ -8,6 +8,7 @@ Lesson topics and completed homework, as a static site.
 pnpm dev     # http://localhost:3000
 pnpm build   # static build, one prerendered page per lesson
 pnpm lint
+pnpm test    # the source parser in lib/lesson-source.ts, and every lesson against it
 ```
 
 ## Adding a lesson
@@ -178,6 +179,7 @@ render through `components/reference-page.tsx`.
 | `app/globals.css` | the design tokens: colours for both themes, fonts, the `eyebrow` label |
 | `content/lessons/*.mdx` | the lessons |
 | `lib/lessons.ts` | reads and sorts them from the filesystem |
+| `lib/lesson-source.ts` | reads navigation, cards and rules out of a lesson's source |
 | `components/gap.tsx` | one blank in a cloze exercise |
 | `components/exercise.tsx` | numbered items and dialogue turns |
 | `components/translation.tsx` | sentence pairs for a text to translate |
