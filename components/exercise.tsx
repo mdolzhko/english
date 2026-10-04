@@ -8,12 +8,18 @@ import type { CSSProperties, ReactNode } from "react";
 export function Exercise({
   id,
   title,
+  topic,
+  topicId,
   instruction,
   example,
   children,
 }: {
   id: string;
   title: string;
+  /** The card this exercise practises, shown as a label above the title. */
+  topic?: string;
+  /** id of that card, so the label links back to it. */
+  topicId?: string;
   instruction?: string;
   example?: string;
   children: ReactNode;
@@ -23,6 +29,15 @@ export function Exercise({
       id={id}
       className="not-prose mt-14 scroll-mt-8 rounded-lg border border-line bg-surface p-6 first:mt-0 sm:p-8"
     >
+      {topic &&
+        (topicId ? (
+          <a href={`#${topicId}`} className="eyebrow mb-1.5 block transition hover:text-accent">
+            {topic}
+          </a>
+        ) : (
+          <p className="eyebrow mb-1.5">{topic}</p>
+        ))}
+
       <h2 className="font-display text-xl font-semibold tracking-tight">{title}</h2>
 
       {instruction && (

@@ -107,6 +107,10 @@ inside a card when one card holds several rules.
 `<Note label="Two past simples">…</Note>` is a short emphasised aside; the
 label leads the sentence in bold. Keep the body to one or two sentences.
 
+An exercise that practises one card names it: `<Exercise topic="Past Perfect"
+topicId="past-perfect" …>` shows the topic as a label above the title, linking
+back to the card.
+
 ## Translation exercises
 
 For a text to translate, `<Translation>` holds one `<Pair>` per sentence: the
