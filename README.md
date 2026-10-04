@@ -124,7 +124,8 @@ until the sentence is clicked.
 `[brackets]` in `en` highlight the verb form the sentence is about, as they do
 in `<Chart>`; with a `rule`, clicking that form shows the rule's `hint`. A
 `<Pair>` without `en` renders as "not translated yet", so unfinished homework
-is visible rather than missing. Keep each `<Pair>` on one line for the same
+is visible rather than missing. `paragraph` on a `<Pair>` marks the first sentence of
+a new paragraph of the source text and draws a gap before it. Keep each `<Pair>` on one line for the same
 reason as `<Gap>`.
 
 ## Why `<Gap>` carries `options`

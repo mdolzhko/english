@@ -72,16 +72,19 @@ export function Translation({ children }: { children: ReactNode }) {
  * One sentence of the text and my translation of it. `[brackets]` in `en`
  * mark the verb form the sentence is about; with a `rule`, clicking that form
  * shows the rule's one-line explanation. Leave `en` out while the sentence is
- * still to do — it renders as a visible gap, not as nothing.
+ * still to do — it renders as a visible gap, not as nothing. `paragraph`
+ * marks the first sentence of a new paragraph of the source text.
  */
 export function Pair({
   ua,
   en,
   rule: ruleId,
+  paragraph = false,
 }: {
   ua: string;
   en?: string;
   rule?: string;
+  paragraph?: boolean;
 }) {
   const mode = useContext(ModeContext);
   const rule = useRule(ruleId);
@@ -90,10 +93,11 @@ export function Pair({
 
   const practice = mode === "practice";
   const hidden = practice && !revealed;
+  const item = paragraph ? "pl-2 pt-5 [li+&]:border-t [li+&]:border-line" : "pl-2";
 
   if (hidden) {
     return (
-      <li className="pl-2">
+      <li className={item}>
         <button
           type="button"
           onClick={() => setRevealed(true)}
@@ -109,7 +113,7 @@ export function Pair({
   }
 
   return (
-    <li className="pl-2">
+    <li className={item}>
       <p
         className={
           practice
