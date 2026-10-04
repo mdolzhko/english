@@ -14,6 +14,22 @@ A static Next.js site: lesson notes, homework and two reference pages, one
 MDX file each. The README says how to write content; this file says how to
 write code.
 
+## Purpose
+
+Max is learning English with a teacher. The teacher sends material (mostly
+from test-english.com), explanations and homework; the homework used to
+arrive as `.pages` files, which neither of them could look back on. This
+site is the shared place instead: Max opens it to read the theory and do the
+task, the teacher opens it to see which material goes with which task and to
+check Max's texts. Nothing else should land on the teacher.
+
+Homework follows two patterns — translate a Ukrainian text into English, or
+fix an English text by picking the right option — and they map to
+`<Translation>` and `<Gap>`. There is no fixed shape for the finished site;
+the one direction is accumulating theory with exercises per topic. Add
+structure when a real inconvenience of either reader calls for it, not
+before.
+
 ## Conventions
 
 1. Content is MDX, code is TSX. A lesson or reference is one file in
