@@ -1,23 +1,4 @@
-import type { ReactNode } from "react";
-
-/**
- * Renders `[bracketed]` fragments as the highlighted auxiliary, so chart rows
- * stay plain strings in the lesson file.
- */
-function highlight(text: string): ReactNode[] {
-  return text.split(/(\[[^\]]+\])/).map((part, index) =>
-    part.startsWith("[") && part.endsWith("]") ? (
-      <b
-        key={index}
-        className="rounded bg-good px-1 py-0.5 font-medium text-good-ink"
-      >
-        {part.slice(1, -1)}
-      </b>
-    ) : (
-      <span key={index}>{part}</span>
-    ),
-  );
-}
+import { highlight } from "./highlight";
 
 /**
  * A reference table of example sentences. Scrolls sideways rather than

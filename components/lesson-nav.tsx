@@ -46,10 +46,20 @@ export function LessonNav({ sections }: { sections: LessonSection[] }) {
     >
       <p className="eyebrow">On this page</p>
       <ul className="mt-3 space-y-2 border-l border-line">
-        {sections.map((section) => {
+        {sections.map((section, index) => {
           const isActive = section.id === active;
+          const previous = sections[index - 1];
           return (
-            <li key={section.id}>
+            <li
+              key={section.id}
+              className={
+                // A gap with a line through it where the notes end and the
+                // exercises begin.
+                previous && previous.kind !== section.kind
+                  ? "mt-4 border-t border-line pt-4"
+                  : undefined
+              }
+            >
               <a
                 href={`#${section.id}`}
                 aria-current={isActive ? "true" : undefined}

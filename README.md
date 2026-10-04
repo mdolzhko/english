@@ -75,6 +75,26 @@ block ends the paragraph — so the sentence renders split over three lines
 instead of one. A trailing `{" "}` on the tag's line does not prevent it.
 Lines get long, which is the price of the rule.
 
+## Translation exercises
+
+For a text to translate, `<Translation>` holds one `<Pair>` per sentence: the
+Ukrainian source and my English under it, so the two can be read together.
+A reader can switch the exercise to *Practice*, which hides every translation
+until the sentence is clicked.
+
+```mdx
+<Translation>
+  <Pair ua="Коли вона відчинила двері, він уже пішов." en="When she opened the door, he [had already left]." rule="earlier-past" />
+  <Pair ua="Ще не перекладене речення." />
+</Translation>
+```
+
+`[brackets]` in `en` highlight the verb form the sentence is about, as they do
+in `<Chart>`; with a `rule`, clicking that form shows the rule's `hint`. A
+`<Pair>` without `en` renders as "not translated yet", so unfinished homework
+is visible rather than missing. Keep each `<Pair>` on one line for the same
+reason as `<Gap>`.
+
 ## Why `<Gap>` carries `options`
 
 Right now a gap renders as the filled-in answer and the site has no state at
@@ -92,5 +112,7 @@ built without touching a single content file.
 | `lib/lessons.ts` | reads and sorts them from the filesystem |
 | `components/gap.tsx` | one blank in a cloze exercise |
 | `components/exercise.tsx` | numbered items and dialogue turns |
+| `components/translation.tsx` | sentence pairs for a text to translate |
+| `components/rule.tsx`, `components/rule-note.tsx` | a rule in the notes, and its one-line form shown next to a gap |
 | `app/page.tsx` | lesson list |
 | `app/lessons/[slug]/page.tsx` | one lesson |

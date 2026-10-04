@@ -16,8 +16,16 @@ export type LessonMeta = {
   source?: string;
 };
 
-/** One entry in a lesson's side navigation. */
-export type LessonSection = { id: string; title: string };
+/**
+ * One entry in a lesson's side navigation. `kind` tells the notes (every
+ * `## heading`) from the exercises, so the navigation can draw a line
+ * between the two groups.
+ */
+export type LessonSection = {
+  id: string;
+  title: string;
+  kind: "notes" | "exercise";
+};
 
 /** A rule from the lesson notes, in the short form a gap shows. */
 export type LessonRule = { id: string; title: string; hint: string };
@@ -65,18 +73,23 @@ function getSections(slug: string): LessonSection[] {
 
   for (const match of source.matchAll(/^## +(.+?)\s*$/gm)) {
     const title = match[1];
-    found.push({ id: slugify(title), title, at: match.index });
+    found.push({ id: slugify(title), title, kind: "notes", at: match.index });
   }
 
   for (const match of source.matchAll(
     /<Exercise\b[^>]*?\bid="([^"]+)"[^>]*?\btitle="([^"]+)"/g,
   )) {
-    found.push({ id: match[1], title: match[2], at: match.index });
+    found.push({
+      id: match[1],
+      title: match[2],
+      kind: "exercise",
+      at: match.index,
+    });
   }
 
   return found
     .sort((a, b) => a.at - b.at)
-    .map(({ id, title }) => ({ id, title }));
+    .map(({ id, title, kind }) => ({ id, title, kind }));
 }
 
 /**

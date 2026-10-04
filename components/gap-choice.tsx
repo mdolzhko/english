@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { RIGHT, WRONG } from "./gap-styles";
+import { RuleNote } from "./rule-note";
 import { useRule } from "./rules-context";
 
 /**
@@ -50,23 +51,7 @@ export function GapChoice({
         ))}
       </select>
 
-      {isWrong && rule && (
-        // Every element here is phrasing content styled as a block: a real
-        // <div> inside this inline span would be invalid HTML.
-        <span
-          role="note"
-          className="absolute left-0 top-full z-20 mt-2 block w-max max-w-[min(20rem,calc(100vw-3rem))] rounded-lg border border-warn-line bg-warn p-3 text-left text-xs font-normal not-italic leading-relaxed text-ink shadow-sm"
-        >
-          <span className="block font-medium">{rule.title}</span>
-          {rule.hint && <span className="mt-1 block">{rule.hint}</span>}
-          <a
-            href={`#${rule.id}`}
-            className="mt-2 block font-medium underline underline-offset-2"
-          >
-            Read the full rule →
-          </a>
-        </span>
-      )}
+      {isWrong && rule && <RuleNote rule={rule} />}
     </span>
   );
 }
