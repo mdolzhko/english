@@ -89,6 +89,26 @@ block ends the paragraph — so the sentence renders split over three lines
 instead of one. A trailing `{" "}` on the tag's line does not prevent it.
 Lines get long, which is the price of the rule.
 
+## How a lesson is made
+
+The notes and the exercises come from test-english.com, the site the teacher
+uses. It blocks `curl` and plain fetches, so read it in a browser. Its pages
+follow one pattern:
+
+- explanation: `test-english.com/explanation/<level>/<slug>/`
+- exercise N: `test-english.com/grammar-points/<level>/<slug>/N/`
+
+A new lesson: `status: "todo"`, one `<Topic>` card per idea with the
+explanation's examples, a `<Chart>` for the form, `<Note>`s for the traps, a
+"Choosing between them" card when the lesson contrasts several forms, and one
+`<Exercise>` per card with `topic`, `topicId` and `source`. Gaps carry the
+answer and a `rule`, so a wrong pick explains itself; the lesson's status
+decides whether they open blank or filled.
+
+Translation homework is written by Max. Set it up as `<Pair ua="…" />` with
+no `en`, mark paragraph starts with `paragraph`, and add the English later,
+with the verb form in `[brackets]` and a `rule`.
+
 ## Cards and notes
 
 A lesson's notes are numbered cards, one per idea:

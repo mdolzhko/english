@@ -46,6 +46,50 @@ write code.
 12. Before committing: `pnpm lint`, `pnpm test`, `pnpm exec tsc --noEmit`,
     `pnpm build`.
 
+## Decisions
+
+Settled, with the reason, so they are not reopened by accident.
+
+- **One lesson for the three past tenses, not three lessons.** The teacher's
+  homework mixes them, and the point of the topic is choosing between them;
+  the comparison has to live on one page.
+- **Translation exercises are sentence pairs, not tabs.** Tabs break the pair:
+  to check sentence 7 you would jump between tabs. Practice mode hides the
+  English per sentence instead.
+- **Topic cards, not `##` headings.** Each idea is a numbered card with the
+  construction as a chip, the way the review documents Max likes are laid out;
+  the summary above the notes is built from the cards.
+- **Reference pages are not lessons.** Irregular verbs and verb patterns are
+  looked up more often than any lesson, so they sit in the header, not in the
+  lesson list, and have no status or date.
+- **Reference data stays in the MDX file**, next to its notes, even though
+  MDX is not type-checked. The table flags an incomplete row instead.
+- **Past simple is not highlighted** in the past tenses lesson: it is the
+  baseline of the story, and only the tense the lesson is about is marked.
+- **Exercises sit after the cards, all together**, labelled with the card they
+  practise, rather than inside each card. The side navigation keeps its two
+  groups, notes and exercises.
+- **A lesson's `done` status shows the answers; `todo` hides them.** One
+  switch, no second set of content.
+
+## Where things stand
+
+Updated at the end of a session that changes it. Last: 2026-10-04.
+
+- Lessons: Auxiliary verbs (done), Past tenses (in progress), Conditionals
+  (to do). References: Irregular verbs, Verb patterns.
+- Past tenses, Exercise 5 is the teacher's text: 6 of 30 sentences
+  translated. Exercises 1–4 are ten-sentence sets, none translated yet. Max
+  translates them himself and sends the English to be inserted with the verb
+  form in brackets and a `rule`.
+- Conditionals: the answers in all 70 gaps were worked out from the rules,
+  not taken from test-english's key, which the site does not show. The status
+  becomes `done` once Max has worked through it.
+- The Ukrainian translations in both reference pages have not been reviewed
+  by Max.
+- Not deployed. When it is: Vercel from the browser under the personal
+  account — the local CLI is logged into the work account.
+
 ## Known debt
 
 Reviewed and left alone on purpose. Fix each when its trigger arrives, not
