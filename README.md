@@ -19,6 +19,7 @@ metadata decides the order on the home page.
 ```mdx
 export const metadata = {
   title: "Auxiliary verbs: Different uses",
+  description: "",             // one or two sentences, optional
   date: "2026-09-29",          // YYYY-MM-DD
   topic: "Grammar",
   status: "done",              // todo | in-progress | done
@@ -75,6 +76,37 @@ block ends the paragraph — so the sentence renders split over three lines
 instead of one. A trailing `{" "}` on the tag's line does not prevent it.
 Lines get long, which is the price of the rule.
 
+## Cards and notes
+
+A lesson's notes are numbered cards, one per idea:
+
+```mdx
+<Topic
+  id="past-perfect"
+  title="Past Perfect"
+  form="had + past participle"
+  chips={["an earlier past"]}
+  gist="Something that had already happened before the main event."
+>
+
+Paragraphs, `<Rule>`s and `<Chart>`s, as before.
+
+</Topic>
+```
+
+The number is a CSS counter, so cards renumber themselves when reordered.
+`gist` is not shown on the card: the lesson page reads every `<Topic>` from
+the source and lists them, with their gists, as a summary above the notes —
+the same way the side navigation is built. Lessons without `<Topic>` cards
+(plain `## headings`) get no summary.
+
+A card can be the rule itself: give it a `hint` and a `<Gap rule="…">` can
+point at the card's `id`, exactly as it points at a `<Rule>`. Use `<Rule>`
+inside a card when one card holds several rules.
+
+`<Note label="Two past simples">…</Note>` is a short emphasised aside; the
+label leads the sentence in bold. Keep the body to one or two sentences.
+
 ## Translation exercises
 
 For a text to translate, `<Translation>` holds one `<Pair>` per sentence: the
@@ -123,6 +155,8 @@ type-checked.
 | `components/gap.tsx` | one blank in a cloze exercise |
 | `components/exercise.tsx` | numbered items and dialogue turns |
 | `components/translation.tsx` | sentence pairs for a text to translate |
+| `components/topic.tsx` | a numbered card of the notes, and the `<Note>` aside |
+| `components/lesson-summary.tsx` | the cards with their gists, above the notes |
 | `components/rule.tsx`, `components/rule-note.tsx` | a rule in the notes, and its one-line form shown next to a gap |
 | `content/irregular-verbs.mdx` | the irregular verbs reference: notes, the verb list and the table in one file |
 | `components/irregular-verbs.tsx` | the searchable table, top 50 by default |

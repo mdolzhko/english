@@ -135,3 +135,19 @@ body {
   content: none;
 }
 
+/* Numbered cards: the counter lives on the lesson body, the number on each card. */
+.topics {
+  counter-reset: topic;
+}
+.topic {
+  counter-increment: topic;
+}
+.topic-num::before {
+  content: counter(topic, decimal-leading-zero);
+}
+
+/* A note is one sentence run on from its label, however MDX wraps it. */
+.note p {
+  display: inline;
+  margin: 0;
+}

@@ -1,5 +1,7 @@
 export const metadata = {
   title: "Past tenses: Continuous, Perfect, Perfect Continuous",
+  description:
+    "Three tenses that sit around the main events of a story — what was going on, what had already happened, and what had been going on for a while — and how to pick between them.",
   date: "2026-10-03",
   topic: "Grammar",
   status: "in-progress",
@@ -7,7 +9,13 @@ export const metadata = {
   source: "https://test-english.com/grammar-points/b1-b2/narrative-tenses/",
 };
 
-## Past Continuous
+<Topic
+  id="past-continuous"
+  title="Past Continuous"
+  form="was / were + -ing"
+  chips={["background to the events", "unfinished at that moment"]}
+  gist="What was already going on around the main events: the background, not the plot. Set by a time expression or by a past simple clause."
+>
 
 A story’s main events go in the past simple, one after another. The past
 continuous is for what was **already going on** around those events — the
@@ -57,7 +65,10 @@ the shorter one that happens in the middle of it — often interrupting it.
 - *After dinner, I went into the living room and saw that she was crying.*
 - *We didn’t go out because it was raining.*
 
-Two past simples instead mean the actions happened one after the other:
+<Note label="Order of events">
+Two past simples mean one thing after another, not one thing during another.
+The tense of the second verb changes the order.
+</Note>
 
 <Chart
   columns={["Sentence", "Meaning"]}
@@ -69,8 +80,15 @@ Two past simples instead mean the actions happened one after the other:
 
 </Rule>
 
+</Topic>
 
-## Past Perfect
+<Topic
+  id="past-perfect"
+  title="Past Perfect"
+  form="had + past participle"
+  chips={["an earlier past", "already over at that moment"]}
+  gist="Something that had already happened before the main event. Looks back from a past moment the way the present perfect looks back from now."
+>
 
 The past perfect is an **earlier past**: something that had already happened
 before the main event of the story. It looks back from a past moment the same
@@ -118,10 +136,22 @@ perfect **simple**, usually with *how long*, *for*, *since* or *always*.
 - *The day I left, I had been in England for exactly four years.*
 - *She told me she had always hated her sister.*
 
+<Note label="Simple, not continuous">
+Amounts, counts and states take the simple form: *they had been married for 48
+years*, never *had been being married*. The continuous is for the next card.
+</Note>
+
 </Rule>
 
+</Topic>
 
-## Past Perfect Continuous
+<Topic
+  id="past-perfect-continuous"
+  title="Past Perfect Continuous"
+  form="had been + -ing"
+  chips={["an earlier past with duration", "dynamic verbs only"]}
+  gist="A longer or repeated action that started before the main event and ran up to it — very often the reason for a state at that moment."
+>
 
 The past perfect continuous is the earlier past with **duration**: a longer or
 repeated action that started before the main event and ran up to it. It is
@@ -157,8 +187,25 @@ It also covers actions repeated over a period before the past moment.
 
 </Rule>
 
+<Note label="Result in the past simple">
+The continuous gives the cause, and the effect is usually a past simple right
+next to it: *he had been drinking all night*, so *I told him not to drive*.
+</Note>
 
-## Choosing between them
+</Topic>
+
+<Topic
+  id="choosing-between-them"
+  title="Choosing between them"
+  chips={["one moment, four tenses", "marker words"]}
+  gist="Fix the past moment, then ask what the other action was doing relative to it: in progress, already over, or lasting up to it."
+>
+
+<Note label="Main events first">
+The plot of a story is past simple. The three tenses on this page only say how
+some other action relates to a plot event: in progress at it, already over
+before it, or lasting up to it.
+</Note>
 
 Take one past moment, *when he arrived*, and ask what the other action was doing
 relative to it. Each tense answers a different question.
@@ -186,6 +233,7 @@ Words that usually point at a tense:
   ]}
 />
 
+</Topic>
 
 <Exercise
   id="exercise-1"

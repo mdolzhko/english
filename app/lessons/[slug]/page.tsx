@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LessonNav } from "@/components/lesson-nav";
+import { LessonSummary } from "@/components/lesson-summary";
 import { RulesProvider } from "@/components/rules-context";
 import { StatusBadge } from "@/components/status-badge";
 import { formatLessonDate, getLesson, getLessonSlugs } from "@/lib/lessons";
@@ -15,7 +16,9 @@ export async function generateMetadata({
 }: PageProps<"/lessons/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const lesson = await getLesson(slug);
-  return lesson ? { title: lesson.title } : {};
+  return lesson
+    ? { title: lesson.title, description: lesson.description }
+    : {};
 }
 
 export default async function LessonPage({
@@ -37,23 +40,28 @@ export default async function LessonPage({
         ← All lessons
       </Link>
 
-      <header className="mt-8 max-w-3xl">
-        <div className="flex items-center gap-3 text-xs text-muted">
+      <header className="mt-8 flex max-w-3xl flex-col gap-3">
+        <p className="eyebrow">
+          {lesson.topic} ·{" "}
           <time dateTime={lesson.date}>{formatLessonDate(lesson.date)}</time>
-          <span aria-hidden>·</span>
-          <span>{lesson.topic}</span>
-        </div>
+        </p>
 
-        <div className="mt-3 flex flex-wrap items-center gap-3">
-          <h1 className="font-display text-3xl font-semibold tracking-tight">
+        <div className="flex flex-wrap items-center gap-3">
+          <h1 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
             {lesson.title}
           </h1>
           <StatusBadge status={lesson.status} />
         </div>
 
+        {lesson.description && (
+          <p className="text-[17px] leading-relaxed text-muted">
+            {lesson.description}
+          </p>
+        )}
+
         {lesson.source && (
-          <p className="mt-3 text-xs text-muted">
-            Original exercises:{" "}
+          <p className="font-mono text-xs text-faint">
+            original exercises ·{" "}
             <a
               href={lesson.source}
               className="text-accent underline underline-offset-2"
@@ -69,10 +77,16 @@ export default async function LessonPage({
       <div className="mt-12 gap-12 lg:grid lg:grid-cols-[11rem_minmax(0,1fr)]">
         <LessonNav sections={lesson.sections} />
 
-        <div className="prose mt-10 max-w-none lg:mt-0">
-          <RulesProvider rules={lesson.rules}>
-            <Content />
-          </RulesProvider>
+        <div className="mt-10 lg:mt-0">
+          <LessonSummary topics={lesson.topics} />
+
+          <div
+            className={`topics prose max-w-none ${lesson.topics.length > 0 ? "mt-10" : ""}`}
+          >
+            <RulesProvider rules={lesson.rules}>
+              <Content />
+            </RulesProvider>
+          </div>
         </div>
       </div>
     </article>

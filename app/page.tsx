@@ -37,6 +37,12 @@ export default async function HomePage() {
                   <StatusBadge status={lesson.status} />
                 </div>
 
+                {lesson.description && (
+                  <p className="mt-2 max-w-2xl text-sm text-muted">
+                    {lesson.description}
+                  </p>
+                )}
+
                 {lesson.tags && lesson.tags.length > 0 && (
                   <p className="mt-2 font-mono text-xs text-muted">
                     {lesson.tags.map((tag) => `#${tag}`).join("  ")}
