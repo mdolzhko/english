@@ -1,0 +1,155 @@
+export const metadata = {
+  title: "Verbs + to-infinitive and verbs + -ing",
+  description:
+    "Which verbs take to do, which take doing, and the ones that take both — with the same meaning or a different one.",
+};
+
+{/*
+  Four groups. In the first three a row is [verb, переклад, example]; in the
+  last, where the two forms mean different things, a row is
+  [verb, meaning with to, example, meaning with -ing, example]. Square
+  brackets mark the form the row is about.
+*/}
+export const groups = [
+  {
+    id: "to",
+    title: "Verb + to-infinitive",
+    pattern: "want to do",
+    lead: "Mostly verbs about the future from the speaker’s point of view: wanting, deciding, planning, promising, attempting.",
+    rows: [
+      ["afford", "дозволити собі", "We can’t afford [to buy] a new car."],
+      ["agree", "погоджуватися", "She agreed [to help] us."],
+      ["aim", "прагнути, ставити за мету", "We aim [to finish] by Friday."],
+      ["appear", "здаватися", "He appeared [to be] asleep."],
+      ["arrange", "домовлятися", "They arranged [to meet] at six."],
+      ["ask", "просити", "I asked [to see] the manager."],
+      ["attempt", "намагатися", "He attempted [to fix] it himself."],
+      ["choose", "обирати", "She chose [to stay] at home."],
+      ["claim", "стверджувати", "He claims [to know] the answer."],
+      ["decide", "вирішувати", "We decided [to leave] early."],
+      ["demand", "вимагати", "They demanded [to speak] to the owner."],
+      ["deserve", "заслуговувати", "You deserve [to win]."],
+      ["expect", "очікувати", "I expect [to hear] from them soon."],
+      ["fail", "не зуміти, не зробити", "He failed [to notice] the sign."],
+      ["happen", "випадково трапитися", "I happened [to meet] her at the station."],
+      ["hesitate", "вагатися", "Don’t hesitate [to ask]."],
+      ["hope", "сподіватися", "We hope [to see] you again."],
+      ["learn", "навчитися", "She learnt [to drive] last year."],
+      ["manage", "впоратися, зуміти", "We managed [to catch] the last train."],
+      ["need", "потребувати", "I need [to talk] to you."],
+      ["offer", "пропонувати", "He offered [to carry] my bag."],
+      ["plan", "планувати", "They plan [to move] to Lviv."],
+      ["prepare", "готуватися", "We prepared [to leave]."],
+      ["pretend", "вдавати", "He pretended [to be] ill."],
+      ["promise", "обіцяти", "She promised [to call]."],
+      ["refuse", "відмовлятися", "They refused [to pay]."],
+      ["seem", "здаватися", "It seems [to work]."],
+      ["tend", "мати схильність", "He tends [to forget] names."],
+      ["threaten", "погрожувати", "They threatened [to leave]."],
+      ["want", "хотіти", "I want [to go] home."],
+      ["wish", "бажати (формально)", "I wish [to make] a complaint."],
+      ["would like", "хотів би", "I’d like [to order] now."],
+    ],
+  },
+  {
+    id: "ing",
+    title: "Verb + -ing",
+    pattern: "enjoy doing",
+    lead: "Verbs of liking and disliking, of stopping and avoiding, of saying and thinking about an action — plus every expression that ends in a preposition.",
+    rows: [
+      ["admit", "визнавати", "He admitted [taking] the money."],
+      ["avoid", "уникати", "She avoids [driving] at night."],
+      ["can’t help", "не могти втриматися", "I can’t help [laughing]."],
+      ["can’t stand", "терпіти не могти", "He can’t stand [waiting]."],
+      ["consider", "обмірковувати", "We’re considering [moving] abroad."],
+      ["delay", "відкладати", "They delayed [announcing] the results."],
+      ["deny", "заперечувати", "She denied [breaking] the vase."],
+      ["discuss", "обговорювати", "We discussed [going] on holiday together."],
+      ["dislike", "не любити", "I dislike [getting] up early."],
+      ["enjoy", "отримувати задоволення", "I enjoy [cooking]."],
+      ["fancy", "хотіти (розмовне)", "Do you fancy [going] out tonight?"],
+      ["feel like", "хотітися", "I don’t feel like [working] today."],
+      ["finish", "закінчувати", "Have you finished [reading] the book?"],
+      ["give up", "кидати", "He gave up [smoking] last year."],
+      ["imagine", "уявляти", "I can’t imagine [living] there."],
+      ["involve", "передбачати, включати", "The job involves [travelling] a lot."],
+      ["keep (on)", "продовжувати", "She kept [asking] questions."],
+      ["mention", "згадувати", "He mentioned [seeing] you yesterday."],
+      ["mind", "бути проти", "Would you mind [opening] the window?"],
+      ["miss", "сумувати за", "I miss [living] by the sea."],
+      ["postpone", "відкладати", "They postponed [signing] the contract."],
+      ["practise", "практикувати", "You should practise [speaking] every day."],
+      ["put off", "відкладати", "Stop putting off [doing] your homework."],
+      ["recommend", "рекомендувати", "I recommend [trying] the fish."],
+      ["resist", "утриматися від", "I couldn’t resist [buying] it."],
+      ["risk", "ризикувати", "Don’t risk [losing] everything."],
+      ["suggest", "пропонувати", "She suggested [taking] a taxi."],
+      ["look forward to", "з нетерпінням чекати", "I’m looking forward to [seeing] you."],
+      ["be / get used to", "звикнути", "I’m used to [getting] up early."],
+      ["it’s worth", "варто", "It’s worth [visiting] the museum."],
+      ["it’s no use / no good", "немає сенсу", "It’s no use [complaining]."],
+      ["spend / waste time", "витрачати час", "He spends hours [playing] games."],
+    ],
+  },
+  {
+    id: "both",
+    title: "Both, same meaning",
+    pattern: "start to do = start doing",
+    lead: "Verbs of beginning, continuing and liking take either form. Only after would like, would love and would prefer is it always to-infinitive.",
+    rows: [
+      ["begin", "починати", "It began [to rain]. / It began [raining]."],
+      ["start", "починати", "She started [to cry]. / She started [crying]."],
+      ["continue", "продовжувати", "He continued [to talk]. / He continued [talking]."],
+      ["like", "любити, подобатися", "I like [to swim]. / I like [swimming]."],
+      ["love", "любити", "She loves [to dance]. / She loves [dancing]."],
+      ["hate", "ненавидіти", "I hate [to wait]. / I hate [waiting]."],
+      ["prefer", "віддавати перевагу", "I prefer [to walk]. / I prefer [walking]."],
+      ["can’t bear", "не виносити", "I can’t bear [to see] him upset. / I can’t bear [seeing] him upset."],
+      ["bother", "завдавати собі клопоту", "Don’t bother [to call]. / Don’t bother [calling]."],
+      ["intend", "мати намір", "We intend [to stay] a week. / We intend [staying] a week."],
+    ],
+  },
+  {
+    id: "differ",
+    title: "Both, different meaning",
+    pattern: "stop to do ≠ stop doing",
+    lead: "The to-infinitive usually looks forward to an action; the -ing form looks back at it or names it as an activity.",
+    rows: [
+      ["remember", "не забути зробити — спочатку згадуєш, потім робиш", "Remember [to lock] the door.", "пам’ятати, що робив — спогад", "I remember [locking] the door."],
+      ["forget", "забути зробити", "Don’t forget [to call] her.", "забути, що робив", "I’ll never forget [meeting] her."],
+      ["stop", "зупинитися, щоб зробити — мета", "He stopped [to smoke].", "припинити робити", "He stopped [smoking]."],
+      ["try", "спробувати, докласти зусиль — важко", "I tried [to open] the window, but it was stuck.", "спробувати як варіант — експеримент", "Try [opening] the window if it’s hot."],
+      ["regret", "з жалем повідомити — формально", "We regret [to inform] you that the flight is cancelled.", "шкодувати про зроблене", "I regret [telling] him."],
+      ["go on", "перейти до наступної дії", "She went on [to become] a doctor.", "продовжувати ту саму дію", "She went on [talking] for an hour."],
+      ["mean", "мати намір", "I meant [to call] you.", "означати, тягти за собою", "Moving abroad means [leaving] my friends."],
+      ["need", "потрібно зробити — активно", "I need [to wash] the car.", "потребує, щоб зробили — пасивно: needs to be washed", "The car needs [washing]."],
+      ["like", "вважати правильним, мати за звичку", "I like [to pay] my bills on time.", "отримувати задоволення", "I like [swimming]."],
+      ["see / hear / watch + object", "ціла дія від початку до кінця — без to", "I saw him [cross] the street.", "дія в процесі", "I saw him [crossing] the street."],
+    ],
+  },
+];
+
+When one verb follows another, the second one takes a fixed form, and the
+first verb decides which. There is no rule that covers every verb, but a few
+patterns do most of the work:
+
+<Chart
+  labelColumn
+  columns={["", "Rule", "Examples"]}
+  rows={[
+    ["after a preposition", "always -ing", "good at [cooking], interested in [learning], before [leaving], without [saying]"],
+    ["after an adjective", "to-infinitive", "happy [to help], difficult [to say], ready [to go]"],
+    ["verb + object + to", "tell, ask, want, advise, allow, remind, persuade…", "She told me [to wait]. I want you [to listen]."],
+    ["modal verbs and let, make", "bare infinitive, no to", "You must [go]. Let me [see]. They made us [wait]."],
+    ["as the subject", "-ing", "[Smoking] is bad for you. [Learning] a language takes time."],
+  ]}
+/>
+
+<Note label="A test for the mixed verbs">
+If the second action is still ahead when the first verb happens — remember to
+lock, stop to smoke, try to open — it is the to-infinitive. If it is already
+behind, or is the activity itself — remember locking, stop smoking, try
+opening — it is -ing.
+</Note>
+
+<VerbPatterns groups={groups} />

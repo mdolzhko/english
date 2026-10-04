@@ -150,6 +150,15 @@ with and their order. Rows without it appear under "All", alphabetically. A
 row with a missing form is highlighted in the table, since MDX is not
 type-checked.
 
+## Verb patterns
+
+`content/verb-patterns.mdx` is the second reference page: which verbs take
+`to do`, which take `doing`, and which take both. It exports `groups`, four
+lists with a row per verb — `[verb, translation, example]`, or for the verbs
+whose meaning changes `[verb, meaning with to, example, meaning with -ing,
+example]`. Brackets in an example highlight the form. Both reference pages
+render through `components/reference-page.tsx`.
+
 ## Layout
 
 | Path | Role |
@@ -166,5 +175,8 @@ type-checked.
 | `content/irregular-verbs.mdx` | the irregular verbs reference: notes, the verb list and the table in one file |
 | `components/irregular-verbs.tsx` | the searchable table, top 50 by default |
 | `app/page.tsx` | lesson list |
-| `app/irregular-verbs/page.tsx` | the reference page |
+| `content/verb-patterns.mdx` | verbs + to-infinitive / -ing: four lists and the table |
+| `components/verb-patterns.tsx` | the grouped, searchable table |
+| `components/reference-page.tsx` | header and body shared by the reference pages |
+| `app/irregular-verbs/page.tsx`, `app/verb-patterns/page.tsx` | the reference pages |
 | `app/lessons/[slug]/page.tsx` | one lesson |

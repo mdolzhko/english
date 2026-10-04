@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const LINKS = [
   { href: "/", label: "Lessons", matches: (path: string) => path === "/" || path.startsWith("/lessons") },
   { href: "/irregular-verbs", label: "Irregular verbs", matches: (path: string) => path.startsWith("/irregular-verbs") },
+  { href: "/verb-patterns", label: "Verb patterns", matches: (path: string) => path.startsWith("/verb-patterns") },
 ] as const;
 
 /** Site-wide navigation in the header; the current section is underlined. */
@@ -13,7 +14,7 @@ export function SiteNav() {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Site" className="flex items-center gap-5 text-sm">
+    <nav aria-label="Site" className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm">
       {LINKS.map(({ href, label, matches }) => {
         const isActive = matches(pathname);
         return (

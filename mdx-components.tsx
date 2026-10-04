@@ -6,6 +6,7 @@ import { Rule } from "@/components/rule";
 import { Note, Topic } from "@/components/topic";
 import { Pair, Translation } from "@/components/translation";
 import { IrregularVerbs } from "@/components/irregular-verbs";
+import { VerbPatterns } from "@/components/verb-patterns";
 
 /**
  * Components available inside every .mdx lesson without an import.
@@ -25,6 +26,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Translation,
     Pair,
     IrregularVerbs,
+    VerbPatterns,
     ...components,
   };
 }
