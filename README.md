@@ -103,6 +103,16 @@ the interactive version — a real `<select>` per gap, answers kept across
 sessions, and a shareable link that shows the teacher what was chosen — can be
 built without touching a single content file.
 
+## Irregular verbs
+
+`content/irregular-verbs.mdx` is a reference page rather than a lesson, linked
+from the site header. It exports `verbs`, one row per verb — base, past simple,
+past participle, translation — plus a fifth value, the frequency rank, on the
+50 most common only. The rank is not shown; it picks the verbs the table opens
+with and their order. Rows without it appear under "All", alphabetically. A
+row with a missing form is highlighted in the table, since MDX is not
+type-checked.
+
 ## Layout
 
 | Path | Role |
@@ -114,5 +124,8 @@ built without touching a single content file.
 | `components/exercise.tsx` | numbered items and dialogue turns |
 | `components/translation.tsx` | sentence pairs for a text to translate |
 | `components/rule.tsx`, `components/rule-note.tsx` | a rule in the notes, and its one-line form shown next to a gap |
+| `content/irregular-verbs.mdx` | the irregular verbs reference: notes, the verb list and the table in one file |
+| `components/irregular-verbs.tsx` | the searchable table, top 50 by default |
 | `app/page.tsx` | lesson list |
+| `app/irregular-verbs/page.tsx` | the reference page |
 | `app/lessons/[slug]/page.tsx` | one lesson |

@@ -6,6 +6,7 @@ import {
   IBM_Plex_Sans_Condensed,
 } from "next/font/google";
 import "./globals.css";
+import { SiteNav } from "@/components/site-nav";
 
 const plexSans = IBM_Plex_Sans({
   variable: "--font-plex-sans",
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/" className="font-display text-base font-semibold tracking-tight">
               English Lessons
             </Link>
+            <SiteNav />
           </div>
         </header>
 
