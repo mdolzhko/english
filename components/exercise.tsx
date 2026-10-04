@@ -30,7 +30,7 @@ export function Exercise({
   return (
     <section
       id={id}
-      className="not-prose mt-14 scroll-mt-8 rounded-lg border border-line bg-surface p-6 first:mt-0 sm:p-8"
+      className="not-prose card my-10 scroll-mt-8 p-6 first:mt-0 sm:p-8"
     >
       {topic &&
         (topicId ? (

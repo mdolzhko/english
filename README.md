@@ -190,5 +190,6 @@ render through `components/reference-page.tsx`.
 | `content/verb-patterns.mdx` | verbs + to-infinitive / -ing: four lists and the table |
 | `components/verb-patterns.tsx` | the grouped, searchable table |
 | `components/reference-page.tsx` | header and body shared by the reference pages |
+| `components/table.tsx`, `segmented.tsx`, `search-field.tsx` | the table shell, the segmented control and the search box every list uses |
 | `app/irregular-verbs/page.tsx`, `app/verb-patterns/page.tsx` | the reference pages |
 | `app/lessons/[slug]/page.tsx` | one lesson |

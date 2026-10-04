@@ -4,6 +4,7 @@ import { createContext, useContext, useState, type ReactNode } from "react";
 import { highlight, MARK } from "./highlight";
 import { RuleNote } from "./rule-note";
 import { useRule } from "./lesson-context";
+import { Segmented } from "./segmented";
 
 type Mode = "both" | "practice";
 
@@ -30,31 +31,15 @@ export function Translation({ children }: { children: ReactNode }) {
             : "Each sentence with its translation. Verb forms are highlighted."}
         </p>
 
-        <div
-          role="radiogroup"
-          aria-label="View"
-          className="inline-flex rounded-lg border border-line bg-surface p-0.5 text-xs"
-        >
-          {(["both", "practice"] as const).map((option) => {
-            const isOn = option === mode;
-            return (
-              <button
-                key={option}
-                type="button"
-                role="radio"
-                aria-checked={isOn}
-                onClick={() => setMode(option)}
-                className={`rounded-md px-2.5 py-1 transition ${
-                  isOn
-                    ? "bg-accent text-white"
-                    : "text-muted hover:text-ink"
-                }`}
-              >
-                {option === "both" ? "Both languages" : "Practice"}
-              </button>
-            );
-          })}
-        </div>
+        <Segmented
+          label="View"
+          value={mode}
+          onChange={setMode}
+          options={[
+            { value: "both", label: "Both languages" },
+            { value: "practice", label: "Practice" },
+          ]}
+        />
       </div>
 
       {/* Keyed by mode so every sentence closes again on a switch. */}

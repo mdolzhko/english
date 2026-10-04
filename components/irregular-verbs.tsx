@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { SearchField } from "./search-field";
+import { Segmented } from "./segmented";
+import { CELL, ROW, Table } from "./table";
 
 /**
  * One verb as the content file writes it: base, past simple, past
@@ -44,42 +47,21 @@ export function IrregularVerbs({ verbs }: { verbs: VerbRow[] }) {
   return (
     <div className="not-prose mt-10">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div
-          role="radiogroup"
-          aria-label="Which verbs"
-          className="inline-flex rounded-lg border border-line bg-surface p-0.5 text-xs"
-        >
-          {[
-            { all: false, label: `Top ${TOP}` },
-            { all: true, label: "All" },
-          ].map(({ all, label }) => {
-            const isOn = all === showAll;
-            return (
-              <button
-                key={label}
-                type="button"
-                role="radio"
-                aria-checked={isOn}
-                onClick={() => setShowAll(all)}
-                className={`rounded-md px-2.5 py-1 transition ${
-                  isOn
-                    ? "bg-accent text-white"
-                    : "text-muted hover:text-ink"
-                }`}
-              >
-                {label}
-              </button>
-            );
-          })}
-        </div>
+        <Segmented
+          label="Which verbs"
+          value={showAll ? "all" : "top"}
+          onChange={(view) => setShowAll(view === "all")}
+          options={[
+            { value: "top", label: `Top ${TOP}` },
+            { value: "all", label: "All" },
+          ]}
+        />
 
-        <input
-          type="search"
+        <SearchField
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={setQuery}
           placeholder="Search any form or the translation"
-          aria-label="Search verbs"
-          className="w-full rounded-lg border border-line bg-surface px-3 py-1.5 text-sm placeholder:text-faint focus:border-accent focus:outline-none sm:w-72"
+          label="Search verbs"
         />
       </div>
 
@@ -90,54 +72,38 @@ export function IrregularVerbs({ verbs }: { verbs: VerbRow[] }) {
           Nothing matches “{query}”.
         </p>
       ) : (
-        <div className="mt-3 overflow-x-auto rounded-lg border border-line bg-surface">
-          <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
-            <thead>
-              <tr className="bg-panel">
-                <th scope="col" className="w-10 px-4 py-2.5">
-                  <span className="sr-only">Number</span>
-                </th>
-                {["Base", "Past simple", "Past participle", "Translation"].map(
-                  (column) => (
-                    <th
-                      key={column}
-                      scope="col"
-                      className="eyebrow px-4 py-2.5"
-                    >
-                      {column}
-                    </th>
-                  ),
-                )}
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((verb, index) => {
-                const [base, past, participle, translation] = verb;
-                // The content file is not type-checked, so a row with a
-                // missing form is flagged rather than silently blank.
-                const incomplete = !base || !past || !participle || !translation;
-                return (
-                  <tr
-                    key={base || index}
-                    className={`border-t border-line  ${
-                      incomplete ? "bg-warn" : ""
-                    }`}
-                  >
-                    <td className="px-4 py-2 text-right font-mono text-xs tabular-nums text-faint">
-                      {index + 1}
-                    </td>
-                    <td className="px-4 py-2 font-medium">{base || "?"}</td>
-                    <td className="px-4 py-2">{past || "?"}</td>
-                    <td className="px-4 py-2">{participle || "?"}</td>
-                    <td className="px-4 py-2 text-muted">
-                      {translation || "?"}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+        <Table
+          className="mt-3"
+          minWidth="36rem"
+          columns={[
+            { label: "Number", hidden: true, className: "w-10" },
+            "Base",
+            "Past simple",
+            "Past participle",
+            "Translation",
+          ]}
+        >
+        {rows.map((verb, index) => {
+          const [base, past, participle, translation] = verb;
+          // The content file is not type-checked, so a row with a
+          // missing form is flagged rather than silently blank.
+          const incomplete = !base || !past || !participle || !translation;
+          return (
+            <tr
+              key={base || index}
+              className={`${ROW} ${incomplete ? "bg-warn" : ""}`}
+            >
+              <td className={`${CELL} text-right font-mono text-xs tabular-nums text-faint`}>
+                {index + 1}
+              </td>
+              <td className={`${CELL} font-medium`}>{base || "?"}</td>
+              <td className={CELL}>{past || "?"}</td>
+              <td className={CELL}>{participle || "?"}</td>
+              <td className={`${CELL} text-muted`}>{translation || "?"}</td>
+            </tr>
+          );
+        })}
+        </Table>
       )}
     </div>
   );

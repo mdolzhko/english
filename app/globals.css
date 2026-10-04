@@ -77,6 +77,13 @@
   --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
+/* A white box with a hairline: topics, exercises, lesson cards, tables. */
+@utility card {
+  border-radius: 0.5rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
 /* Small uppercase label above a block or a table column. */
 @utility eyebrow {
   font-size: 12px;

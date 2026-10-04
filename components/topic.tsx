@@ -30,7 +30,7 @@ export function Topic({
   return (
     <section
       id={id}
-      className="topic my-10 scroll-mt-8 rounded-lg border border-line bg-surface p-6 first:mt-0 sm:p-8"
+      className="topic card my-10 scroll-mt-8 p-6 first:mt-0 sm:p-8"
     >
       <div className="not-prose flex flex-col gap-3">
         <div className="flex items-baseline gap-3">

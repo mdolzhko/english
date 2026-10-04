@@ -1,4 +1,5 @@
 import { highlight } from "./highlight";
+import { CELL, ROW, Table } from "./table";
 
 /**
  * A reference table of example sentences. Scrolls sideways rather than
@@ -19,44 +20,24 @@ export function Chart({
 }) {
   return (
     <div className="not-prose my-6">
-      <div className="overflow-x-auto rounded-lg border border-line bg-surface">
-        <table className="w-full min-w-[32rem] border-collapse text-left text-sm">
-          <thead>
-            <tr className="bg-panel">
-              {columns.map((column, index) => (
-                <th
-                  key={column || index}
-                  scope="col"
-                  className="eyebrow px-4 py-2.5"
-                >
-                  {column}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row, rowIndex) => (
-              <tr
-                key={rowIndex}
-                className="border-t border-line"
+      <Table columns={columns}>
+        {rows.map((row, rowIndex) => (
+          <tr key={rowIndex} className={ROW}>
+            {row.map((cell, cellIndex) => (
+              <td
+                key={cellIndex}
+                className={
+                  labelColumn && cellIndex === 0
+                    ? `${CELL} whitespace-nowrap align-middle font-mono text-xs text-muted`
+                    : `${CELL} align-middle leading-relaxed`
+                }
               >
-                {row.map((cell, cellIndex) => (
-                  <td
-                    key={cellIndex}
-                    className={
-                      labelColumn && cellIndex === 0
-                        ? "whitespace-nowrap px-4 py-2.5 align-middle font-mono text-xs text-muted"
-                        : "px-4 py-2.5 align-middle leading-relaxed"
-                    }
-                  >
-                    {highlight(cell)}
-                  </td>
-                ))}
-              </tr>
+                {highlight(cell)}
+              </td>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </tr>
+        ))}
+      </Table>
 
       {note && <p className="mt-2 text-xs text-muted">{note}</p>}
     </div>

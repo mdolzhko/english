@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { highlight } from "./highlight";
+import { SearchField } from "./search-field";
+import { Segmented } from "./segmented";
+import { CELL, ROW, Table, type Column } from "./table";
 
 /** `[verb, translation, example]`, or with two meanings `[verb, meaning with to, example, meaning with -ing, example]`. */
 export type PatternRow =
@@ -46,46 +49,31 @@ export function VerbPatterns({ groups }: { groups: PatternGroup[] }) {
   }
 
   const contrast = hits.some(({ row }) => row.length === 5);
+  const columns: Column[] = [
+    "Verb",
+    ...(contrast ? ["+ to-infinitive", "+ -ing"] : ["Translation", "Example"]),
+    ...(needle ? ["Group"] : []),
+  ];
 
   return (
     <div className="not-prose mt-10">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div
-          role="radiogroup"
-          aria-label="Which verbs"
-          className="inline-flex flex-wrap rounded-lg border border-line bg-surface p-0.5 text-xs"
-        >
-          {groups.map((group) => {
-            const isOn = !needle && group.id === open.id;
-            return (
-              <button
-                key={group.id}
-                type="button"
-                role="radio"
-                aria-checked={isOn}
-                onClick={() => {
-                  setOpenId(group.id);
-                  setQuery("");
-                }}
-                className={`rounded-md px-2.5 py-1 transition ${
-                  isOn
-                    ? "bg-accent text-white"
-                    : "text-muted hover:text-ink"
-                }`}
-              >
-                {group.title}
-              </button>
-            );
-          })}
-        </div>
+        <Segmented
+          label="Which verbs"
+          value={needle ? "" : open.id}
+          onChange={(id) => {
+            setOpenId(id);
+            setQuery("");
+          }}
+          options={groups.map((group) => ({ value: group.id, label: group.title }))}
+        />
 
-        <input
-          type="search"
+        <SearchField
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={setQuery}
           placeholder="Search a verb, a translation or an example"
-          aria-label="Search verbs"
-          className="w-full rounded-lg border border-line bg-surface px-3 py-1.5 text-sm placeholder:text-faint focus:border-accent focus:outline-none sm:w-80"
+          label="Search verbs"
+          className="sm:w-80"
         />
       </div>
 
@@ -97,62 +85,41 @@ export function VerbPatterns({ groups }: { groups: PatternGroup[] }) {
       {hits.length === 0 ? (
         <p className="mt-6 text-sm text-muted">Nothing matches “{query}”.</p>
       ) : (
-        <div className="mt-4 overflow-x-auto rounded-lg border border-line bg-surface">
-          <table className="w-full min-w-[40rem] border-collapse text-left text-sm">
-            <thead>
-              <tr className="bg-panel">
-                <th scope="col" className="eyebrow px-4 py-2.5">Verb</th>
-                {contrast ? (
-                  <>
-                    <th scope="col" className="eyebrow px-4 py-2.5">+ to-infinitive</th>
-                    <th scope="col" className="eyebrow px-4 py-2.5">+ -ing</th>
-                  </>
-                ) : (
-                  <>
-                    <th scope="col" className="eyebrow px-4 py-2.5">Translation</th>
-                    <th scope="col" className="eyebrow px-4 py-2.5">Example</th>
-                  </>
-                )}
-                {needle && <th scope="col" className="eyebrow px-4 py-2.5">Group</th>}
-              </tr>
-            </thead>
-            <tbody>
-              {hits.map(({ row, group }) => (
-                <tr key={`${group.id}-${row[0]}`} className="border-t border-line align-top">
-                  <td className="px-4 py-2.5 font-medium">{row[0]}</td>
-                  {row.length === 5 ? (
-                    <>
-                      <td className="px-4 py-2.5 leading-relaxed">
-                        <span className="block text-muted">{row[1]}</span>
-                        <span className="mt-1 block">{highlight(row[2])}</span>
-                      </td>
-                      <td className="px-4 py-2.5 leading-relaxed">
-                        <span className="block text-muted">{row[3]}</span>
-                        <span className="mt-1 block">{highlight(row[4])}</span>
-                      </td>
-                    </>
-                  ) : contrast ? (
-                    // A plain row inside a search that also found contrast rows
-                    <td colSpan={2} className="px-4 py-2.5 leading-relaxed">
-                      <span className="block text-muted">{row[1]}</span>
-                      <span className="mt-1 block">{highlight(row[2])}</span>
-                    </td>
-                  ) : (
-                    <>
-                      <td className="px-4 py-2.5 text-muted">{row[1]}</td>
-                      <td className="px-4 py-2.5 leading-relaxed">{highlight(row[2])}</td>
-                    </>
-                  )}
-                  {needle && (
-                    <td className="whitespace-nowrap px-4 py-2.5 font-mono text-xs text-faint">
-                      {group.pattern}
-                    </td>
-                  )}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <Table className="mt-4" minWidth="40rem" columns={columns}>
+          {hits.map(({ row, group }) => (
+            <tr key={`${group.id}-${row[0]}`} className={`${ROW} align-top`}>
+              <td className={`${CELL} font-medium`}>{row[0]}</td>
+              {row.length === 5 ? (
+                <>
+                  <td className={`${CELL} leading-relaxed`}>
+                    <span className="block text-muted">{row[1]}</span>
+                    <span className="mt-1 block">{highlight(row[2])}</span>
+                  </td>
+                  <td className={`${CELL} leading-relaxed`}>
+                    <span className="block text-muted">{row[3]}</span>
+                    <span className="mt-1 block">{highlight(row[4])}</span>
+                  </td>
+                </>
+              ) : contrast ? (
+                // A plain row inside a search that also found contrast rows
+                <td colSpan={2} className={`${CELL} leading-relaxed`}>
+                  <span className="block text-muted">{row[1]}</span>
+                  <span className="mt-1 block">{highlight(row[2])}</span>
+                </td>
+              ) : (
+                <>
+                  <td className={`${CELL} text-muted`}>{row[1]}</td>
+                  <td className={`${CELL} leading-relaxed`}>{highlight(row[2])}</td>
+                </>
+              )}
+              {needle && (
+                <td className={`${CELL} whitespace-nowrap font-mono text-xs text-faint`}>
+                  {group.pattern}
+                </td>
+              )}
+            </tr>
+          ))}
+        </Table>
       )}
     </div>
   );

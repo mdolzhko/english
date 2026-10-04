@@ -20,7 +20,7 @@ export default async function HomePage() {
             <li key={lesson.slug}>
               <Link
                 href={`/lessons/${lesson.slug}`}
-                className="block rounded-lg border border-line bg-surface p-5 transition hover:border-line-strong"
+                className="card block p-5 transition hover:border-line-strong"
               >
                 <div className="flex items-center gap-3 text-xs text-muted">
                   <time dateTime={lesson.date}>
