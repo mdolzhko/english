@@ -6,6 +6,7 @@ import { highlight } from "./highlight";
 import { SearchField } from "./search-field";
 import { Segmented } from "./segmented";
 import { CELL, ROW, Table } from "./table";
+import { WordCards, type Card } from "./word-cards";
 
 /** One word as the content file writes it: word, translation, example sentence. */
 export type WordRow = [string, string, string?];
@@ -21,14 +22,16 @@ export type WordGroup = {
   words: WordRow[];
 };
 
-type Mode = "both" | "practice";
+type Mode = "both" | "practice" | "cards";
 
 /**
  * The vocabulary list, grouped by the day the words were added. A group is
  * the unit of review — the handful of words from one lesson — so the page
  * is long rather than paginated: a page number says nothing about what is
  * on it, a date and a source do. "Practice" hides every translation until
- * the word is clicked. Searching looks through every group at once.
+ * the word is clicked; "Cards" shows the same words one at a time in random
+ * order. Searching looks through every group at once, and the cards are
+ * dealt from whatever the search leaves.
  */
 export function Vocabulary({ groups }: { groups: WordGroup[] }) {
   const [mode, setMode] = useState<Mode>("both");
@@ -51,6 +54,9 @@ export function Vocabulary({ groups }: { groups: WordGroup[] }) {
       .filter((word) => word.some((part) => part && normalise(part).includes(needle)));
     shown = [{ key: "search", words }];
     caption = words.length === 1 ? "1 match" : `${words.length} matches`;
+  } else if (mode === "cards") {
+    shown = [{ key: "cards", words: groups.flatMap((group) => group.words) }];
+    caption = `${total} words in random order. Arrow keys or the buttons to move.`;
   } else {
     // Several groups on one day keep their file order; the date is shown
     // once, above the first of them.
@@ -81,6 +87,7 @@ export function Vocabulary({ groups }: { groups: WordGroup[] }) {
           options={[
             { value: "both", label: "Both languages" },
             { value: "practice", label: "Practice" },
+            { value: "cards", label: "Cards" },
           ]}
         />
 
@@ -96,6 +103,9 @@ export function Vocabulary({ groups }: { groups: WordGroup[] }) {
 
       {shown.every((group) => group.words.length === 0) ? (
         <p className="mt-6 text-sm text-muted">Nothing matches “{query}”.</p>
+      ) : mode === "cards" ? (
+        // Keyed by the words shown, so a new search deals a new deck.
+        <WordCards key={needle} cards={cardsFor(groups, needle)} />
       ) : (
         shown.map((group) => (
           <section key={group.key} className={group.heading ? "mt-10 first:mt-3" : "mt-6"}>
@@ -164,6 +174,21 @@ function Word({ row, practice }: { row: WordRow; practice: boolean }) {
       <td className={`${CELL} text-muted`}>{example ? highlight(example) : ""}</td>
     </tr>
   );
+}
+
+/**
+ * Every word that matches the search, each with the line that says where it
+ * came from — the day's source is on the first group of that day only.
+ */
+function cardsFor(groups: WordGroup[], needle: string): Card[] {
+  return groups.flatMap((group) => {
+    const source =
+      group.source ?? groups.find((g) => g.date === group.date && g.source)?.source;
+    const label = [formatDate(group.date), source, group.title].filter(Boolean).join(" · ");
+    return group.words
+      .filter((word) => !needle || word.some((part) => part && normalise(part).includes(needle)))
+      .map((row) => ({ row, label }));
+  });
 }
 
 /** Lower-case, and one apostrophe for the two the keyboard and the content use. */

@@ -216,7 +216,10 @@ under it. Append new groups at the end — the page shows the newest day first
 regardless. The list is long rather than paginated,
 because a day's words are the unit worth reviewing together; *Practice*
 hides every translation until the word is clicked, and search looks through
-every group. A row without a word or a translation is highlighted.
+every group. *Cards* shows the same words one at a time in random order, with
+the translation and the example — for flipping through, not for testing —
+and is dealt from whatever the search leaves. A row without a word or a
+translation is highlighted.
 
 ## Reference pages
 
@@ -251,6 +254,7 @@ reference page needs no code.
 | `components/verb-patterns.tsx` | the grouped, searchable table |
 | `content/vocabulary.mdx` | new words, grouped by the day they were added |
 | `components/vocabulary.tsx` | the grouped table with practice mode and search |
+| `components/word-cards.tsx` | the words one at a time, shuffled |
 | `components/table.tsx`, `segmented.tsx`, `search-field.tsx` | the table shell, the segmented control and the search box every list uses |
 | `app/page.tsx` | lesson list |
 | `app/[reference]/page.tsx` | one reference page |

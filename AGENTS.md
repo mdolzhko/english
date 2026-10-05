@@ -90,6 +90,10 @@ Settled, with the reason, so they are not reopened by accident.
 - **Vocabulary is grouped by the day it was added, not paginated.** A page
   number says nothing about what is on it; a date and a source name the
   handful of words worth reviewing together. Search spans every group.
+- **Cards show the word with its translation; they are for flipping
+  through, not for testing.** A random order removes the list's one
+  giveaway, position; recall is what "Practice" is for. Not a quiz, no
+  "knew it" buttons, nothing kept between visits.
 - **No "learnt" marks on words yet.** They need state that survives a
   reload, which the site does not have; they go with the teacher's marks
   (issue #1), after a deploy.
