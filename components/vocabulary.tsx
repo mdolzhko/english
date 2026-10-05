@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { formatDate } from "@/lib/format-date";
+import { wordAnchor } from "@/lib/hints";
 import { highlight } from "./highlight";
 import { SearchField } from "./search-field";
 import { Segmented } from "./segmented";
@@ -59,12 +60,12 @@ export function Vocabulary({ groups }: { groups: WordGroup[] }) {
     caption = `${total} words in random order. Arrow keys or the buttons to move.`;
   } else {
     // Several groups on one day keep their file order; the date is shown
-    // once, above the first of them.
+    // once, above the first of them, and again when the source changes.
     const ordered = [...groups].sort((a, b) => b.date.localeCompare(a.date));
     shown = ordered.map((group, index) => ({
       key: `${group.date}-${index}`,
       heading:
-        ordered[index - 1]?.date === group.date
+        ordered[index - 1]?.date === group.date && !group.source
           ? undefined
           : group.source
             ? `${formatDate(group.date)} · ${group.source}`
@@ -150,7 +151,8 @@ function Word({ row, practice }: { row: WordRow; practice: boolean }) {
   const hidden = practice && !revealed;
 
   return (
-    <tr className={`${ROW} ${incomplete ? "bg-warn" : ""}`}>
+    // The id is the anchor a lesson's hint links to; `:target` lights it up.
+    <tr id={wordAnchor(word)} className={`${ROW} target:bg-good ${incomplete ? "bg-warn" : ""}`}>
       <td className={`${CELL} font-medium`}>
         {hidden ? (
           <button
@@ -178,12 +180,15 @@ function Word({ row, practice }: { row: WordRow; practice: boolean }) {
 
 /**
  * Every word that matches the search, each with the line that says where it
- * came from — the day's source is on the first group of that day only.
+ * came from — a group without a source belongs to the last source named
+ * on its day.
  */
 function cardsFor(groups: WordGroup[], needle: string): Card[] {
+  let source: string | undefined;
+  let date: string | undefined;
   return groups.flatMap((group) => {
-    const source =
-      group.source ?? groups.find((g) => g.date === group.date && g.source)?.source;
+    if (group.source || group.date !== date) source = group.source;
+    date = group.date;
     const label = [formatDate(group.date), source, group.title].filter(Boolean).join(" · ");
     return group.words
       .filter((word) => !needle || word.some((part) => part && normalise(part).includes(needle)))

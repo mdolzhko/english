@@ -5,6 +5,7 @@ import { highlight, MARK } from "./highlight";
 import { RuleNote } from "./rule-note";
 import { useRule } from "./lesson-context";
 import { Segmented } from "./segmented";
+import { Hinted } from "./word-hint";
 
 type Mode = "both" | "practice";
 
@@ -58,7 +59,10 @@ export function Translation({ children }: { children: ReactNode }) {
  * mark the verb form the sentence is about; with a `rule`, clicking that form
  * shows the rule's one-line explanation. Leave `en` out while the sentence is
  * still to do — it renders as a visible gap, not as nothing. `paragraph`
- * marks the first sentence of a new paragraph of the source text.
+ * marks the first sentence of a new paragraph of the source text. In `ua`,
+ * `[промок: get wet]` marks a word to look up: it opens the vocabulary row
+ * for "get wet" on hover, in every mode, so the hint is there while
+ * translating.
  */
 export function Pair({
   ua,
@@ -81,17 +85,18 @@ export function Pair({
   const item = paragraph ? "pl-2 pt-5 [li+&]:border-t [li+&]:border-line" : "pl-2";
 
   if (hidden) {
+    // The sentence is not the button: a word hint inside it is one too.
     return (
       <li className={item}>
+        <p className="leading-relaxed">
+          <Hinted text={ua} />
+        </p>
         <button
           type="button"
           onClick={() => setRevealed(true)}
-          className="block text-left leading-relaxed decoration-line-strong decoration-dotted underline-offset-4 hover:underline"
+          className="mt-1 block font-mono text-xs text-faint decoration-dotted underline-offset-4 hover:underline"
         >
-          {ua}
-          <span className="mt-1 block font-mono text-xs text-faint">
-            show translation
-          </span>
+          show translation
         </button>
       </li>
     );
@@ -106,7 +111,7 @@ export function Pair({
             : "text-sm leading-relaxed text-muted"
         }
       >
-        {ua}
+        <Hinted text={ua} />
       </p>
 
       <div className="relative mt-1 leading-relaxed">

@@ -159,7 +159,17 @@ until the sentence is clicked.
 ```
 
 `[brackets]` in `en` highlight the verb form the sentence is about, as they do
-in `<Chart>`; with a `rule`, clicking that form shows the rule's `hint`. A
+in `<Chart>`; with a `rule`, clicking that form shows the rule's `hint`.
+
+In `ua`, a word Max does not know yet is marked with the vocabulary word that
+explains it: `Андрій уже [промок: get wet], коли…` shows "промок" with a
+dotted underline, and hovering or clicking it opens the vocabulary row for
+"get wet" — in every mode, so the hint is there while translating. The row
+is found by any of its words ("get wet / get soaked" by either), so the word
+has to be in `content/vocabulary.mdx` first; a hint that finds nothing is
+highlighted as a warning. The note links to the row on the vocabulary page,
+by an anchor made from its first word (`/vocabulary#get-wet`), where the row
+is lit up. A
 `<Pair>` without `en` renders as "not translated yet", so unfinished homework
 is visible rather than missing. `paragraph` on a `<Pair>` marks the first sentence of
 a new paragraph of the source text and draws a gap before it. Keep each `<Pair>` on one line for the same
@@ -255,6 +265,8 @@ reference page needs no code.
 | `content/vocabulary.mdx` | new words, grouped by the day they were added |
 | `components/vocabulary.tsx` | the grouped table with practice mode and search |
 | `components/word-cards.tsx` | the words one at a time, shuffled |
+| `lib/vocabulary.ts`, `lib/hints.ts` | the vocabulary as a lookup, and the `[слово: word]` parser |
+| `components/word-hint.tsx`, `components/word-note.tsx` | a marked word in a Ukrainian sentence, and the vocabulary row it opens |
 | `components/table.tsx`, `segmented.tsx`, `search-field.tsx` | the table shell, the segmented control and the search box every list uses |
 | `app/page.tsx` | lesson list |
 | `app/[reference]/page.tsx` | one reference page |

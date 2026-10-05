@@ -6,6 +6,7 @@ import { LessonSummary } from "@/components/lesson-summary";
 import { LessonProvider } from "@/components/lesson-context";
 import { StatusBadge } from "@/components/status-badge";
 import { formatLessonDate, getLesson, getLessonSlugs } from "@/lib/lessons";
+import { getWordIndex } from "@/lib/vocabulary";
 
 export function generateStaticParams() {
   return getLessonSlugs().map((slug) => ({ slug }));
@@ -30,6 +31,7 @@ export default async function LessonPage({
   if (!lesson) notFound();
 
   const { Content } = lesson;
+  const words = await getWordIndex();
 
   return (
     <article>
@@ -83,7 +85,7 @@ export default async function LessonPage({
           <div
             className={`topics prose max-w-none ${lesson.topics.length > 0 ? "mt-10" : ""}`}
           >
-            <LessonProvider rules={lesson.rules} status={lesson.status}>
+            <LessonProvider rules={lesson.rules} status={lesson.status} words={words}>
               <Content />
             </LessonProvider>
           </div>
