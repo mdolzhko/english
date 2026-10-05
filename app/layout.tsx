@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
+import { getReferences } from "@/lib/references";
 
 const plexSans = IBM_Plex_Sans({
   variable: "--font-plex-sans",
@@ -38,7 +39,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const references = (await getReferences()).map(({ slug, label }) => ({
+    href: `/${slug}`,
+    label,
+  }));
+
   return (
     <html
       lang="en"
@@ -50,7 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/" className="font-display text-base font-semibold tracking-tight">
               English Lessons
             </Link>
-            <SiteNav />
+            <SiteNav references={references} />
           </div>
         </header>
 

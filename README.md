@@ -189,8 +189,16 @@ type-checked.
 `to do`, which take `doing`, and which take both. It exports `groups`, four
 lists with a row per verb — `[verb, translation, example]`, or for the verbs
 whose meaning changes `[verb, meaning with to, example, meaning with -ing,
-example]`. Brackets in an example highlight the form. Both reference pages
-render through `components/reference-page.tsx`.
+example]`. Brackets in an example highlight the form.
+
+## Reference pages
+
+Every `.mdx` directly in `content/` (not in `lessons/`) is a reference page,
+served at `/<filename>` by `app/[reference]/page.tsx` through
+`lib/references.ts`. Its `metadata` carries `title` and `description` as a
+lesson's does, plus `label`, the short name in the site navigation, and
+`order`, its place there. The navigation is built from these, so a new
+reference page needs no code.
 
 ## Layout
 
@@ -200,6 +208,7 @@ render through `components/reference-page.tsx`.
 | `content/lessons/*.mdx` | the lessons |
 | `lib/lessons.ts` | reads and sorts them from the filesystem |
 | `lib/lesson-source.ts` | reads navigation, cards and rules out of a lesson's source |
+| `lib/references.ts` | reads the reference pages the same way |
 | `components/gap.tsx` | one blank in a cloze exercise |
 | `components/exercise.tsx` | numbered items and dialogue turns |
 | `components/translation.tsx` | sentence pairs for a text to translate |
@@ -208,10 +217,9 @@ render through `components/reference-page.tsx`.
 | `components/rule.tsx`, `components/rule-note.tsx` | a rule in the notes, and its one-line form shown next to a gap |
 | `content/irregular-verbs.mdx` | the irregular verbs reference: notes, the verb list and the table in one file |
 | `components/irregular-verbs.tsx` | the searchable table, top 50 by default |
-| `app/page.tsx` | lesson list |
 | `content/verb-patterns.mdx` | verbs + to-infinitive / -ing: four lists and the table |
 | `components/verb-patterns.tsx` | the grouped, searchable table |
-| `components/reference-page.tsx` | header and body shared by the reference pages |
 | `components/table.tsx`, `segmented.tsx`, `search-field.tsx` | the table shell, the segmented control and the search box every list uses |
-| `app/irregular-verbs/page.tsx`, `app/verb-patterns/page.tsx` | the reference pages |
+| `app/page.tsx` | lesson list |
+| `app/[reference]/page.tsx` | one reference page |
 | `app/lessons/[slug]/page.tsx` | one lesson |

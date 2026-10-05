@@ -118,10 +118,6 @@ worth building.
 Reviewed and left alone on purpose. Fix each when its trigger arrives, not
 before — and when you are in that file anyway, take it with you.
 
-- **One loader for the reference pages.** `app/irregular-verbs/page.tsx` and
-  `app/verb-patterns/page.tsx` each import their MDX by hand. Trigger: a
-  third reference page, or a list of references anywhere on the site. Then
-  mirror `lib/lessons.ts` with a `lib/references.ts`.
 - **Lesson metadata without compiling the MDX.** `getLessons` imports every
   lesson to read its `metadata`, which compiles the whole file. Trigger: the
   build of the home page gets slow, around ten lessons, or a page needs every

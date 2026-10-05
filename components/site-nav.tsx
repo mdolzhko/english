@@ -3,20 +3,24 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const LINKS = [
-  { href: "/", label: "Lessons", matches: (path: string) => path === "/" || path.startsWith("/lessons") },
-  { href: "/irregular-verbs", label: "Irregular verbs", matches: (path: string) => path.startsWith("/irregular-verbs") },
-  { href: "/verb-patterns", label: "Verb patterns", matches: (path: string) => path.startsWith("/verb-patterns") },
-] as const;
+export type NavLink = { href: string; label: string };
 
-/** Site-wide navigation in the header; the current section is underlined. */
-export function SiteNav() {
+/**
+ * Site-wide navigation in the header; the current section is underlined.
+ * The lessons link is fixed; the reference pages come from their content
+ * files, so a new one appears here by itself.
+ */
+export function SiteNav({ references }: { references: NavLink[] }) {
   const pathname = usePathname();
+  const links: NavLink[] = [{ href: "/", label: "Lessons" }, ...references];
 
   return (
     <nav aria-label="Site" className="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm">
-      {LINKS.map(({ href, label, matches }) => {
-        const isActive = matches(pathname);
+      {links.map(({ href, label }) => {
+        const isActive =
+          href === "/"
+            ? pathname === "/" || pathname.startsWith("/lessons")
+            : pathname.startsWith(href);
         return (
           <Link
             key={href}
