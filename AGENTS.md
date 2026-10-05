@@ -87,6 +87,12 @@ Settled, with the reason, so they are not reopened by accident.
   groups, notes and exercises.
 - **A lesson's `done` status shows the answers; `todo` hides them.** One
   switch, no second set of content.
+- **Vocabulary is grouped by the day it was added, not paginated.** A page
+  number says nothing about what is on it; a date and a source name the
+  handful of words worth reviewing together. Search spans every group.
+- **No "learnt" marks on words yet.** They need state that survives a
+  reload, which the site does not have; they go with the teacher's marks
+  (issue #1), after a deploy.
 - **The navigation is tabs under the title, stuck to the top.** Three
   references beside the title no longer fit on a phone; the tabs come from
   the reference files, so a new page needs no code.
@@ -96,7 +102,11 @@ Settled, with the reason, so they are not reopened by accident.
 Updated at the end of a session that changes it. Last: 2026-10-05.
 
 - Lessons: Auxiliary verbs (done), Past tenses (in progress), Conditionals
-  (to do). References: Irregular verbs, Verb patterns.
+  (to do). References: Irregular verbs, Verb patterns, Vocabulary.
+- Vocabulary: one day of words so far, from the motorcycle story, in the
+  teacher's four kinds. Max sends words in batches after lessons; each batch
+  becomes a group dated that day, `[word, translation, example]` per row.
+  Examples are taken from the exercise text where the word occurs in it.
 - Past tenses, Exercise 5 is the teacher's text: 15 of 30 sentences
   translated. Exercises 1–4 are ten-sentence sets, none translated yet. Max
   translates them himself and sends the English to be inserted with the verb

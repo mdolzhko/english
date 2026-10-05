@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { ComponentType } from "react";
+import { formatDate } from "./format-date";
 import {
   parseLessonSource,
   type LessonRule,
@@ -72,11 +73,4 @@ export async function getLesson(slug: string): Promise<LessonWithContent | null>
   return { slug, ...metadata, Content, ...parseLessonSource(source) };
 }
 
-export function formatLessonDate(date: string): string {
-  return new Date(`${date}T00:00:00Z`).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}
+export const formatLessonDate = formatDate;

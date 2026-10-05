@@ -191,6 +191,33 @@ lists with a row per verb — `[verb, translation, example]`, or for the verbs
 whose meaning changes `[verb, meaning with to, example, meaning with -ing,
 example]`. Brackets in an example highlight the form.
 
+## Vocabulary
+
+`content/vocabulary.mdx` is the third reference page: the words that were new
+to Max when they came up. It exports `groups`, one per day words were added:
+
+```js
+export const groups = [
+  {
+    date: "2026-10-05",
+    source: "Past tenses, the motorcycle story",
+    words: [
+      ["hose", "шланг", "One of the [hoses] had been damaged."],
+    ],
+  },
+];
+```
+
+A row is `[word, translation, example]`; the example is optional and
+brackets in it highlight the word. When the teacher sends the words in kinds
+— words, phrasal verbs, set expressions — make one group per kind with a
+`title`, all on the same date; the page shows the date once and the titles
+under it. Append new groups at the end — the page shows the newest day first
+regardless. The list is long rather than paginated,
+because a day's words are the unit worth reviewing together; *Practice*
+hides every translation until the word is clicked, and search looks through
+every group. A row without a word or a translation is highlighted.
+
 ## Reference pages
 
 Every `.mdx` directly in `content/` (not in `lessons/`) is a reference page,
@@ -210,6 +237,7 @@ reference page needs no code.
 | `lib/lessons.ts` | reads and sorts them from the filesystem |
 | `lib/lesson-source.ts` | reads navigation, cards and rules out of a lesson's source |
 | `lib/references.ts` | reads the reference pages the same way |
+| `lib/format-date.ts` | the one date format, shared by lessons and vocabulary |
 | `components/gap.tsx` | one blank in a cloze exercise |
 | `components/exercise.tsx` | numbered items and dialogue turns |
 | `components/translation.tsx` | sentence pairs for a text to translate |
@@ -221,6 +249,8 @@ reference page needs no code.
 | `components/irregular-verbs.tsx` | the searchable table, top 50 by default |
 | `content/verb-patterns.mdx` | verbs + to-infinitive / -ing: four lists and the table |
 | `components/verb-patterns.tsx` | the grouped, searchable table |
+| `content/vocabulary.mdx` | new words, grouped by the day they were added |
+| `components/vocabulary.tsx` | the grouped table with practice mode and search |
 | `components/table.tsx`, `segmented.tsx`, `search-field.tsx` | the table shell, the segmented control and the search box every list uses |
 | `app/page.tsx` | lesson list |
 | `app/[reference]/page.tsx` | one reference page |

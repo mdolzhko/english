@@ -1,0 +1,79 @@
+export const metadata = {
+  label: "Vocabulary",
+  order: 3,
+  title: "Vocabulary",
+  description:
+    "Words I did not know when they came up, in the order they came up.",
+};
+
+{/*
+  One group per day the words were added: `date`, where they came from in
+  `source`, and a row per word — [word, переклад, example]. Square brackets
+  in the example mark the word. When the teacher sends the words in kinds,
+  one group per kind with a `title`, all on the same date. The newest day
+  is shown first whatever the order here, so append at the end.
+*/}
+export const groups = [
+  {
+    date: "2026-10-05",
+    source: "Past tenses, the motorcycle story",
+    title: "Words",
+    words: [
+      ["hose", "шланг", "One of the [hoses] had been damaged."],
+      ["damaged", "пошкоджений", "One of the hoses had been [damaged]."],
+      ["garage / repair shop", "майстерня", "He was able to find the nearest [garage]."],
+      ["area", "місцевість", "He had downloaded an offline map of the [area]."],
+      ["town", "невелике місто (на відміну від city — велике)", "He was riding through a small [town]."],
+      ["roadside / shoulder", "узбіччя"],
+      ["outside", "надворі", "It was still dark [outside]."],
+      ["nearest", "найближчий", "He was able to find the [nearest] garage."],
+      ["immediately / right away", "одразу", "He [immediately] noticed the problem."],
+      ["fortunately / luckily", "на щастя", "[Fortunately], he had downloaded an offline map of the area."],
+      ["examine / inspect", "уважно оглянути"],
+      ["notice", "помітити", "He immediately [noticed] the problem."],
+      ["repairs", "ремонт, ремонтні роботи", "Andrii wasn’t very good at [repairs]."],
+    ],
+  },
+  {
+    date: "2026-10-05",
+    title: "Phrasal verbs",
+    words: [
+      ["put off", "відкладати", "He had kept [putting off] the trip because of work."],
+      ["keep doing", "постійно щось робити", "He had [kept putting off] the trip."],
+      ["look over", "оглянути", "He stopped and [looked over] his motorcycle."],
+      ["pull over", "з’їхати на узбіччя й зупинитися"],
+    ],
+  },
+  {
+    date: "2026-10-05",
+    title: "Set expressions",
+    words: [
+      ["according to plan", "за планом", "Everything was going [according to plan]."],
+      ["at first", "спочатку (на відміну від first — по-перше)", "[At first] he thought that the sound was coming from a truck."],
+      ["a few seconds later", "за кілька секунд", "[A few seconds later] the motorcycle started losing speed."],
+      ["at the side of the road", "біля дороги, на узбіччі", "He stopped [at the side of the road]."],
+      ["not very good at", "не дуже розумітися на чомусь", "Andrii [wasn’t very good at] repairs."],
+      ["be able to / manage to", "зуміти, змогти (про конкретний успіх)", "He [was able to] find the nearest garage."],
+      ["heavy rain / rain heavily", "сильний дощ / сильно дощити", "While he was walking to the garage, [heavy rain] started."],
+      ["it’s raining cats and dogs", "ллє як з відра"],
+    ],
+  },
+  {
+    date: "2026-10-05",
+    title: "Spelling and usage",
+    words: [
+      ["Carpathian Mountains / the Carpathians", "Карпати", "He decided to spend the weekend in the [Carpathian Mountains]."],
+      ["through", "крізь, через (не плутати з throw — кидати)", "He was riding [through] a small town."],
+      ["suddenly", "раптом (подвійне d)", "He [suddenly] heard a strange sound."],
+      ["listen to", "слухати (завжди з to)", "Andrii was [listening to] music."],
+      ["leave", "виїхати (без прийменника: leave Kyiv)", "He [left] Kyiv at around six."],
+      ["still", "ще (у значенні «досі»)", "It was [still] dark outside."],
+    ],
+  },
+];
+
+Every word here was new to me when I met it, in a lesson, a text or a
+conversation. They are kept by the day they were added, so the words from one
+lesson can be reviewed together.
+
+<Vocabulary groups={groups} />
