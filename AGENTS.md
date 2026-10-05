@@ -87,6 +87,9 @@ Settled, with the reason, so they are not reopened by accident.
   groups, notes and exercises.
 - **A lesson's `done` status shows the answers; `todo` hides them.** One
   switch, no second set of content.
+- **The navigation is tabs under the title, stuck to the top.** Three
+  references beside the title no longer fit on a phone; the tabs come from
+  the reference files, so a new page needs no code.
 
 ## Where things stand
 

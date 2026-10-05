@@ -42,7 +42,7 @@ export function LessonNav({ sections }: { sections: LessonSection[] }) {
   return (
     <nav
       aria-label="On this page"
-      className="lg:sticky lg:top-8 lg:self-start"
+      className="lg:sticky lg:top-20 lg:self-start"
     >
       <p className="eyebrow">On this page</p>
       <ul className="mt-3 space-y-2 border-l border-line">

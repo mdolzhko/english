@@ -51,14 +51,18 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       className={`${plexSans.variable} ${plexCondensed.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <header className="border-b border-line">
-          <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-5">
-            <Link href="/" className="font-display text-base font-semibold tracking-tight">
-              English Lessons
-            </Link>
+        <header className="mx-auto w-full max-w-5xl px-6 pt-5">
+          <Link href="/" className="font-display text-base font-semibold tracking-tight">
+            English Lessons
+          </Link>
+        </header>
+
+        {/* A sibling of the header, not inside it: sticky only holds within its parent. */}
+        <div className="sticky top-0 z-30 border-b border-line bg-ground/95 backdrop-blur">
+          <div className="mx-auto w-full max-w-5xl px-6">
             <SiteNav references={references} />
           </div>
-        </header>
+        </div>
 
         <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-12">
           {children}

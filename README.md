@@ -205,6 +205,7 @@ reference page needs no code.
 | Path | Role |
 | --- | --- |
 | `app/globals.css` | the design tokens: colours for both themes, fonts, the `eyebrow` label |
+| `app/layout.tsx` | the title, the sticky navigation and the page frame |
 | `content/lessons/*.mdx` | the lessons |
 | `lib/lessons.ts` | reads and sorts them from the filesystem |
 | `lib/lesson-source.ts` | reads navigation, cards and rules out of a lesson's source |
@@ -215,6 +216,7 @@ reference page needs no code.
 | `components/topic.tsx` | a numbered card of the notes, and the `<Note>` aside |
 | `components/lesson-summary.tsx` | the cards with their gists, above the notes |
 | `components/rule.tsx`, `components/rule-note.tsx` | a rule in the notes, and its one-line form shown next to a gap |
+| `components/site-nav.tsx` | the tabs under the title: lessons, then every reference page |
 | `content/irregular-verbs.mdx` | the irregular verbs reference: notes, the verb list and the table in one file |
 | `components/irregular-verbs.tsx` | the searchable table, top 50 by default |
 | `content/verb-patterns.mdx` | verbs + to-infinitive / -ing: four lists and the table |
