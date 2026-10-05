@@ -90,11 +90,11 @@ Settled, with the reason, so they are not reopened by accident.
 
 ## Where things stand
 
-Updated at the end of a session that changes it. Last: 2026-10-04.
+Updated at the end of a session that changes it. Last: 2026-10-05.
 
 - Lessons: Auxiliary verbs (done), Past tenses (in progress), Conditionals
   (to do). References: Irregular verbs, Verb patterns.
-- Past tenses, Exercise 5 is the teacher's text: 6 of 30 sentences
+- Past tenses, Exercise 5 is the teacher's text: 15 of 30 sentences
   translated. Exercises 1–4 are ten-sentence sets, none translated yet. Max
   translates them himself and sends the English to be inserted with the verb
   form in brackets and a `rule`.
