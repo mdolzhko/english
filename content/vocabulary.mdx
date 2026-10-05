@@ -10,8 +10,10 @@ export const metadata = {
   One group per day the words were added: `date`, where they came from in
   `source`, and a row per word — [word, переклад, example]. Square brackets
   in the example mark the word. When the teacher sends the words in kinds,
-  one group per kind with a `title`, all on the same date. The newest day
-  is shown first whatever the order here, so append at the end.
+  one group per kind with a `title`, all on the same date; a group with a
+  different `source` on the same day starts a new heading. The newest day
+  is shown first whatever the order here, so append at the end. A lesson's
+  `[слово: word]` hint looks a row up by any of its words.
 */}
 export const groups = [
   {
@@ -127,6 +129,21 @@ export const groups = [
       ["it started to snow / it started snowing", "пішов сніг"],
       ["there was almost nobody / hardly anyone", "майже нікого не було"],
       ["on the beach", "на пляжі", "Lots of tourists were lying [on the beach]."],
+    ],
+  },
+  {
+    date: "2026-10-06",
+    source: "Past tenses, the motorcycle story",
+    words: [
+      ["get wet / get soaked", "промокнути (wet — мокрий, soaked — наскрізь мокрий)"],
+      ["nearby / not far away", "неподалік", "He lives [nearby]."],
+      ["local", "місцевий", "the [local] shop"],
+      ["opposite / across the road", "навпроти", "a café [across the road]"],
+      ["pour down", "лити (про дощ)", "The rain [was pouring down]."],
+      ["reach / get to", "дістатися (reach — без прийменника: reach the hotel; get to — з прийменником)", "We [reached] the station at nine."],
+      ["owner / host", "господар (owner — власник; host — той, хто приймає гостей)"],
+      ["go well / go as planned", "пройти добре / пройти за планом (про подію)", "The meeting [went well]."],
+      ["unexpected", "несподіваний", "an [unexpected] call"],
     ],
   },
 ];
