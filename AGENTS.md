@@ -44,7 +44,8 @@ before.
 5. Attribute text (`hint`, `gist`, `instruction`) uses curly quotes ’ “ ” and
    never a straight `"` or a `>`; the source parser is a regex.
 6. Colours go through the tokens in `app/globals.css`; no palette classes
-   (`zinc-500`), no `dark:` variants. Dark mode is a second set of variables.
+   (`zinc-500`), no `dark:` variants. Each token is a `light-dark()` pair,
+   and `color-scheme` picks the half.
 7. Type: headings `font-display`, labels `eyebrow`, numbers and verb forms
    `font-mono`. Cards are `card`; tables, segmented controls and search
    fields come from the shared components, not from copied classes.
@@ -97,6 +98,14 @@ Settled, with the reason, so they are not reopened by accident.
 - **No "learnt" marks on words yet.** They need state that survives a
   reload, which the site does not have; they go with the teacher's marks
   (issue #1), after a deploy.
+- **"Auto" theme follows the system, not the clock.** A Mac or a phone set
+  to switch at sunset already knows where the reader is; computing sunset
+  on the site would mean asking for location or guessing a city. A chosen
+  theme is kept in `localStorage` for that browser, nowhere else.
+- **A theme change is a cross-fade of the page, not a transition per
+  element.** `transition` on `*` started 952 colour transitions on the
+  vocabulary page and a 32 ms style recalculation up front, which looked
+  like a jolt; the View Transitions API blends two snapshots instead.
 - **The navigation is tabs under the title, stuck to the top.** Three
   references beside the title no longer fit on a phone; the tabs come from
   the reference files, so a new page needs no code.

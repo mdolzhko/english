@@ -240,11 +240,30 @@ lesson's does, plus `label`, the short name in the site navigation, and
 `order`, its place there. The navigation is built from these, so a new
 reference page needs no code.
 
+## Themes
+
+Every colour token is a `light-dark()` pair, and `color-scheme` on `<html>`
+decides which half applies, from `data-theme`. The button in the header
+shows the current theme and cycles auto → light → dark: sun and moon keep
+the choice in `localStorage` for this browser; the half circle forgets it
+and follows the system, so a Mac or a phone set to switch at sunset carries
+the site with it. Each click says what it did in a label that fades,
+because a switch to auto often changes no colour — auto is one of the two.
+An inline script in the head sets `data-theme` before the first paint, so a
+page never flashes the other theme.
+
+A change — a click, or the system switching under auto — is shown as a
+cross-fade of the whole page through the View Transitions API, half a
+second long. Easing every element's own colours was tried first and
+judders: one switch started 952 transitions on the vocabulary page and
+cost a 32 ms style recalculation before the first frame.
+
 ## Layout
 
 | Path | Role |
 | --- | --- |
-| `app/globals.css` | the design tokens: colours for both themes, fonts, the `eyebrow` label |
+| `app/globals.css` | the design tokens: each colour as a light–dark pair, fonts, the `eyebrow` label |
+| `lib/theme.ts`, `components/theme-switch.tsx` | the theme choice kept in this browser, and the one-button switch in the header |
 | `app/layout.tsx` | the title, the sticky navigation and the page frame |
 | `content/lessons/*.mdx` | the lessons |
 | `lib/lessons.ts` | reads and sorts them from the filesystem |

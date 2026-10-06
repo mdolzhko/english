@@ -7,6 +7,8 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { SiteNav } from "@/components/site-nav";
+import { ThemeSwitch } from "@/components/theme-switch";
+import { APPLY_STORED_THEME } from "@/lib/theme";
 import { getReferences } from "@/lib/references";
 
 const plexSans = IBM_Plex_Sans({
@@ -49,12 +51,18 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${plexSans.variable} ${plexCondensed.variable} ${plexMono.variable} h-full antialiased`}
+      // The theme script sets `data-theme` before React sees the page.
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: APPLY_STORED_THEME }} />
+      </head>
       <body className="flex min-h-full flex-col">
-        <header className="mx-auto w-full max-w-5xl px-6 pt-5">
+        <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 pt-5">
           <Link href="/" className="font-display text-base font-semibold tracking-tight">
             English Lessons
           </Link>
+          <ThemeSwitch />
         </header>
 
         {/* A sibling of the header, not inside it: sticky only holds within its parent. */}

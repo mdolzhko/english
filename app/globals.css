@@ -3,52 +3,69 @@
 
 /*
   Design tokens. Every colour in the components goes through these, so the
-  dark theme is a second set of values here rather than `dark:` variants
-  scattered through the markup.
+  dark theme is the second value of each pair rather than `dark:` variants
+  scattered through the markup. Which value applies is decided by
+  `color-scheme` alone, from `data-theme` on <html>, set before the first
+  paint: the reader's choice, or the system's answer when they have none.
 */
 :root {
+  color-scheme: light dark;
+  --ground: light-dark(#f3f3f6, #242424);
+  --surface: light-dark(#ffffff, #2b2b2b);
+  --panel: light-dark(#f7f7fa, #313131);
+  --ink: light-dark(#1d1c23, #e4e4e4);
+  --muted: light-dark(#5d5a69, #bbbbbb);
+  --faint: light-dark(#85828f, #999999);
+  --line: light-dark(#e0dee7, #373737);
+  --line-strong: light-dark(#c9c6d3, #535353);
+  --accent: light-dark(#5b4bae, #9786db);
+  --code: light-dark(#efeef4, #373737);
+  --warn: light-dark(#fff5d1, #413c2d);
+  --warn-line: light-dark(#efd27b, #6d603b);
+  --warn-ink: light-dark(#6b4e00, #ffc000);
+  --good: light-dark(#ddf2e5, #274837);
+  --good-ink: light-dark(#1b6b43, #7ed4a0);
+  --good-line: light-dark(#b6e0c6, #36624b);
+  --leak: light-dark(#c6362f, #f95252);
+  --leak-ink: light-dark(#a52a24, #fd787a);
+}
+:root[data-theme="light"] {
   color-scheme: light;
-  --ground: #f3f3f6;
-  --surface: #ffffff;
-  --panel: #f7f7fa;
-  --ink: #1d1c23;
-  --muted: #5d5a69;
-  --faint: #85828f;
-  --line: #e0dee7;
-  --line-strong: #c9c6d3;
-  --accent: #5b4bae;
-  --code: #efeef4;
-  --warn: #fff5d1;
-  --warn-line: #efd27b;
-  --warn-ink: #6b4e00;
-  --good: #ddf2e5;
-  --good-ink: #1b6b43;
-  --good-line: #b6e0c6;
-  --leak: #c6362f;
-  --leak-ink: #a52a24;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --ground: #242424;
-    --surface: #2b2b2b;
-    --panel: #313131;
-    --ink: #e4e4e4;
-    --muted: #bbbbbb;
-    --faint: #999999;
-    --line: #373737;
-    --line-strong: #535353;
-    --accent: #9786db;
-    --code: #373737;
-    --warn: #413c2d;
-    --warn-line: #6d603b;
-    --warn-ink: #ffc000;
-    --good: #274837;
-    --good-ink: #7ed4a0;
-    --good-line: #36624b;
-    --leak: #f95252;
-    --leak-ink: #fd787a;
+/* The theme button's icon turns in when it changes. */
+@keyframes theme-icon-in {
+  from {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.theme-icon {
+  animation: theme-icon-in 0.35s ease-out;
+}
+
+/* A theme change cross-fades the whole page; see applyTheme in lib/theme.ts. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+}
+/* While it runs, nothing eases on its own: links and buttons would shift colour inside the fade. */
+:root:active-view-transition * {
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*) {
+    animation: none;
+  }
+  .theme-icon {
+    animation: none;
   }
 }
 
