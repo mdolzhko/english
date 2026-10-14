@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local notes for Claude Code sessions: tasks are mine, not the project's
+/.claude/tasks/

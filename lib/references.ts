@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { ComponentType } from "react";
+import { loadReference } from "./content";
 
 /** Exported as `metadata` from every content/*.mdx file that is not a lesson. */
 export type ReferenceMeta = {
@@ -15,8 +16,6 @@ export type ReferenceMeta = {
 export type Reference = ReferenceMeta & { slug: string };
 export type ReferenceWithContent = Reference & { Content: ComponentType };
 
-type ReferenceModule = { default: ComponentType; metadata: ReferenceMeta };
-
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
 /** The reference pages are the .mdx files directly in content/, not in lessons/. */
@@ -28,16 +27,12 @@ export function getReferenceSlugs(): string[] {
     .map((file) => file.replace(/\.mdx$/, ""));
 }
 
-async function importReference(slug: string): Promise<ReferenceModule> {
-  return (await import(`../content/${slug}.mdx`)) as ReferenceModule;
-}
-
 /** Every reference page, in navigation order. */
 export async function getReferences(): Promise<Reference[]> {
   const references = await Promise.all(
     getReferenceSlugs().map(async (slug) => ({
       slug,
-      ...(await importReference(slug)).metadata,
+      ...(await loadReference(slug)).metadata,
     })),
   );
   return references.sort((a, b) => a.order - b.order);
@@ -47,6 +42,6 @@ export async function getReferences(): Promise<Reference[]> {
 export async function getReference(slug: string): Promise<ReferenceWithContent | null> {
   // Also guards the dynamic import against arbitrary slugs.
   if (!getReferenceSlugs().includes(slug)) return null;
-  const { default: Content, metadata } = await importReference(slug);
+  const { Content, metadata } = await loadReference(slug);
   return { slug, ...metadata, Content };
 }

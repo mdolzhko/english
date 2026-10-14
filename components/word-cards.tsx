@@ -34,8 +34,12 @@ export function WordCards({ cards }: { cards: Card[] }) {
   // the segmented control, where the arrows already mean something.
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      const target = event.target as HTMLElement | null;
-      if (target?.closest("input, select, textarea, [role=radiogroup]")) return;
+      if (
+        event.target instanceof Element &&
+        event.target.closest("input, select, textarea, [role=radiogroup]")
+      ) {
+        return;
+      }
       const delta = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
       if (!delta) return;
       event.preventDefault();

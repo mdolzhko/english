@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * One numbered exercise. `id` and `title` are what the page's side
@@ -79,10 +79,7 @@ export function Exercise({
 /** Numbered list of items, for exercises made of separate sentences. */
 export function Items({ children }: { children: ReactNode }) {
   return (
-    <ol
-      className="ml-6 list-decimal space-y-6 marker:font-mono marker:text-sm marker:text-faint"
-      style={{ "--speaker-w": "1.25rem" } as CSSProperties}
-    >
+    <ol className="ml-6 list-decimal space-y-6 marker:font-mono marker:text-sm marker:text-faint [--speaker-w:1.25rem]">
       {children}
     </ol>
   );
@@ -99,10 +96,7 @@ export function Item({ children }: { children: ReactNode }) {
  */
 export function Dialogue({ children }: { children: ReactNode }) {
   return (
-    <div
-      className="space-y-3"
-      style={{ "--speaker-w": "4.75rem" } as CSSProperties}
-    >
+    <div className="space-y-3 [--speaker-w:4.75rem]">
       {children}
     </div>
   );
