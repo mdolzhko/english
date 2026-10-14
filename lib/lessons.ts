@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { ComponentType } from "react";
+import { loadLesson } from "./content";
 import { formatDate } from "./format-date";
 import {
   parseLessonSource,
@@ -35,8 +36,6 @@ export type LessonWithContent = Lesson & {
   topics: LessonTopic[];
 };
 
-type LessonModule = { default: ComponentType; metadata: LessonMeta };
-
 const LESSONS_DIR = path.join(process.cwd(), "content", "lessons");
 
 export function getLessonSlugs(): string[] {
@@ -47,16 +46,12 @@ export function getLessonSlugs(): string[] {
     .map((file) => file.replace(/\.mdx$/, ""));
 }
 
-async function importLesson(slug: string): Promise<LessonModule> {
-  return (await import(`../content/lessons/${slug}.mdx`)) as LessonModule;
-}
-
 /** All lessons, newest first. Metadata only — no content compiled. */
 export async function getLessons(): Promise<Lesson[]> {
   const lessons = await Promise.all(
     getLessonSlugs().map(async (slug) => ({
       slug,
-      ...(await importLesson(slug)).metadata,
+      ...(await loadLesson(slug)).metadata,
     })),
   );
   return lessons.sort((a, b) => b.date.localeCompare(a.date));
@@ -66,7 +61,7 @@ export async function getLessons(): Promise<Lesson[]> {
 export async function getLesson(slug: string): Promise<LessonWithContent | null> {
   // Also guards the dynamic import against arbitrary slugs.
   if (!getLessonSlugs().includes(slug)) return null;
-  const { default: Content, metadata } = await importLesson(slug);
+  const { Content, metadata } = await loadLesson(slug);
   // The outline is read from the source rather than the compiled module, so
   // navigation and hints cannot drift from the content.
   const source = fs.readFileSync(path.join(LESSONS_DIR, `${slug}.mdx`), "utf8");

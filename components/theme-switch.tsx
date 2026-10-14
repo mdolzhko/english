@@ -35,6 +35,9 @@ const ICONS: Record<Theme, { icon: ReactNode; name: string; said: string }> = {
   auto: { icon: Auto, name: "Follow the system", said: "Auto · following the system" },
 };
 
+/** What the server renders, before the browser's choice is known. */
+const SERVER_THEME: Theme = "auto";
+
 /** How long the label stays after a click, before it fades. */
 const SAY_FOR = 1600;
 
@@ -49,7 +52,7 @@ const SAY_FOR = 1600;
  * click with nothing to show for it would look broken.
  */
 export function ThemeSwitch() {
-  const theme = useSyncExternalStore(subscribe, getTheme, () => "auto" as Theme);
+  const theme = useSyncExternalStore(subscribe, getTheme, () => SERVER_THEME);
   const [saying, setSaying] = useState<Theme | null>(null);
   const timer = useRef<number | undefined>(undefined);
 

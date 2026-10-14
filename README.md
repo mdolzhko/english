@@ -269,6 +269,7 @@ cost a 32 ms style recalculation before the first frame.
 | `lib/lessons.ts` | reads and sorts them from the filesystem |
 | `lib/lesson-source.ts` | reads navigation, cards and rules out of a lesson's source |
 | `lib/references.ts` | reads the reference pages the same way |
+| `lib/content.ts` | the one door for content files: every `import()` of one, and the guards that type what comes out |
 | `lib/format-date.ts` | the one date format, shared by lessons and vocabulary |
 | `components/gap.tsx` | one blank in a cloze exercise |
 | `components/exercise.tsx` | numbered items and dialogue turns |
