@@ -5,11 +5,16 @@ Lesson topics and completed homework, as a static site.
 ## Development
 
 ```bash
-pnpm dev     # http://localhost:3000
-pnpm build   # static build, one prerendered page per lesson
-pnpm lint
-pnpm test    # the source parser in lib/lesson-source.ts, and every lesson against it
+pnpm dev        # http://localhost:3000
+pnpm check      # lint, types and tests in one go — run before every commit
+pnpm build      # static build, one prerendered page per lesson
+pnpm lint       # also refuses `as`, `any` and `import()` outside lib/content.ts
+pnpm typecheck
+pnpm test       # the parsers and guards in lib/, and every lesson against them
 ```
+
+`pnpm check` stops at the first step that fails, so its last lines are the
+problem to fix.
 
 ## Adding a lesson
 

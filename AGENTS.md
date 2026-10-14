@@ -60,8 +60,8 @@ before.
 11. Commits are one theme each, imperative mood, body says why. Nothing is
     committed or pushed until Max asks; authorship is the personal account
     (`mdolzhko`), set in the local git config.
-12. Before committing: `pnpm lint`, `pnpm test`, `pnpm exec tsc --noEmit`,
-    `pnpm build`.
+12. Before committing: `pnpm check` (lint, types, tests). Before pushing,
+    `pnpm build` as well.
 
 ## Decisions
 
