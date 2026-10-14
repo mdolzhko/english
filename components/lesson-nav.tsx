@@ -19,22 +19,36 @@ export function LessonNav({ sections }: { sections: LessonSection[] }) {
 
     if (elements.length === 0) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const topmost = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
-          )[0];
-        if (topmost) setActive(topmost.target.id);
-      },
-      // Only count a section as active once it reaches the upper band of
-      // the viewport, so the highlight follows reading position.
-      { rootMargin: "0px 0px -70% 0px" },
-    );
+    // The current section is the last one whose top has reached the line a
+    // click on its link scrolls it to: its own scroll margin, under the
+    // sticky bar. Taking the topmost section in a band instead picked the
+    // tail of the previous one, which also sits in that band, so the
+    // highlight lagged one item behind on the way up.
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      let current = elements[0];
+      for (const element of elements) {
+        const line = parseFloat(getComputedStyle(element).scrollMarginTop) + 8;
+        if (element.getBoundingClientRect().top <= line) current = element;
+      }
+      // At the very bottom a short last section can never reach the line.
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      setActive((atBottom ? elements[elements.length - 1] : current).id);
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
 
-    elements.forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
   }, [ids]);
 
   if (sections.length === 0) return null;
