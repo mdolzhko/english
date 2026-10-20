@@ -112,7 +112,7 @@ Settled, with the reason, so they are not reopened by accident.
 
 ## Where things stand
 
-Updated at the end of a session that changes it. Last: 2026-10-05.
+Updated at the end of a session that changes it. Last: 2026-10-20.
 
 - Lessons: Auxiliary verbs (done), Past tenses (in progress), Conditionals
   (to do). References: Irregular verbs, Verb patterns, Vocabulary.
@@ -120,10 +120,11 @@ Updated at the end of a session that changes it. Last: 2026-10-05.
   teacher's four kinds. Max sends words in batches after lessons; each batch
   becomes a group dated that day, `[word, translation, example]` per row.
   Examples are taken from the exercise text where the word occurs in it.
-- Past tenses, Exercise 5 is the teacher's text: 15 of 30 sentences
-  translated. Exercises 1–4 are ten-sentence sets, none translated yet. Max
-  translates them himself and sends the English to be inserted with the verb
-  form in brackets and a `rule`.
+- Past tenses, Exercise 5 is the teacher's text: all 30 sentences
+  translated, 16–30 not yet checked by the teacher. Exercises 1–4 are
+  ten-sentence sets, none translated yet. Max translates them himself and
+  sends the English to be inserted with the verb form in brackets and a
+  `rule`.
 - Conditionals: the answers in all 70 gaps were worked out from the rules,
   not taken from test-english's key, which the site does not show. The status
   becomes `done` once Max has worked through it.
