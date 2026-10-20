@@ -116,9 +116,11 @@ Updated at the end of a session that changes it. Last: 2026-10-20.
 
 - Lessons: Auxiliary verbs (done), Past tenses (in progress), Conditionals
   (to do). References: Irregular verbs, Verb patterns, Vocabulary.
-- Vocabulary: one day of words so far, from the motorcycle story, in the
-  teacher's four kinds. Max sends words in batches after lessons; each batch
-  becomes a group dated that day, `[word, translation, example]` per row.
+- Vocabulary: three days of words so far, from the motorcycle story and
+  Exercise 1, in kinds (words, verbs, phrasal verbs, set expressions…).
+  Max sends words in batches after lessons; each batch becomes a group
+  dated that day, `[word, translation, example]` per row. A word already
+  in the list is not repeated; its row gets the new note instead.
   Examples are taken from the exercise text where the word occurs in it.
 - Past tenses, Exercise 5 is the teacher's text: all 30 sentences
   translated, 16–30 not yet checked by the teacher. Exercises 1–4 are
