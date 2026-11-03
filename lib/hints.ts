@@ -1,11 +1,12 @@
-/** A piece of a Ukrainian sentence: plain text, or a word with a vocabulary key. */
+/** A piece of a sentence: plain text, or a word with the key that explains it. */
 export type HintPart = { text: string; key?: string };
 
 /**
  * Splits `[промок: get wet]` out of a sentence: the text before the colon is
- * what the reader sees, the text after it is the vocabulary word that
- * explains it. A bracket without a colon is left as it is, since the
- * Ukrainian text may use brackets of its own.
+ * what the reader sees, the text after it is what explains it — a
+ * vocabulary word in a Ukrainian sentence, a rule id in a `<Marked>` one. A
+ * bracket without a colon is left as it is, since the text may use brackets
+ * of its own.
  */
 export function parseHints(sentence: string): HintPart[] {
   return sentence

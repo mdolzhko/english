@@ -175,6 +175,22 @@ is visible rather than missing. `paragraph` on a `<Pair>` marks the first senten
 a new paragraph of the source text and draws a gap before it. Keep each `<Pair>` on one line for the same
 reason as `<Gap>`.
 
+## Articles marked in a sentence
+
+For a finished English sentence whose point is its articles, `<Marked>`
+puts the reason on each one:
+
+```mdx
+<Item><Turn><Marked text="[The: superlatives] best movie I’ve seen recently is [Dune: titles]." /></Turn></Item>
+```
+
+`[The: superlatives]` underlines "The"; hovering, focusing or tapping it
+opens the one-line form of the `<Rule>` or `<Topic>` with that id, with a
+link down to the full rule. A mark on a word that is not *the*, *a* or *an*
+— `[Dune: titles]` — is a place where the article was left out on purpose,
+and is dotted instead of underlined. A mark whose rule does not exist is
+highlighted as a warning. Keep the tag on one line, like `<Gap>`.
+
 ## Why `<Gap>` carries `options`
 
 Right now a gap renders as the filled-in answer and the site has no state at

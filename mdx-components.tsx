@@ -5,6 +5,7 @@ import { Chart } from "@/components/chart";
 import { Rule } from "@/components/rule";
 import { Note, Topic } from "@/components/topic";
 import { Pair, Translation } from "@/components/translation";
+import { Marked } from "@/components/marked";
 import { IrregularVerbs } from "@/components/irregular-verbs";
 import { VerbPatterns } from "@/components/verb-patterns";
 import { Vocabulary } from "@/components/vocabulary";
@@ -26,6 +27,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Turn,
     Translation,
     Pair,
+    Marked,
     IrregularVerbs,
     VerbPatterns,
     Vocabulary,

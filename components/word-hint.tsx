@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { useWord } from "./lesson-context";
 import { parseHints } from "@/lib/hints";
+import { HoverNote } from "./hover-note";
 import { WordNote } from "./word-note";
 
 /**
@@ -27,9 +27,6 @@ export function Hinted({ text }: { text: string }) {
 
 function Hint({ text, word }: { text: string; word: string }) {
   const row = useWord(word);
-  const [hover, setHover] = useState(false);
-  const [focused, setFocused] = useState(false);
-  const [pinned, setPinned] = useState(false);
 
   if (!row) {
     return (
@@ -39,31 +36,12 @@ function Hint({ text, word }: { text: string; word: string }) {
     );
   }
 
-  const open = hover || focused || pinned;
-  // Hover and focus are tracked on the wrapper, which holds the note too,
-  // so moving the pointer or the focus from the word into the note keeps
-  // it open; it closes once both have left.
   return (
-    <span
-      className="relative"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onFocus={() => setFocused(true)}
-      onBlur={(event) => {
-        if (event.currentTarget.contains(event.relatedTarget)) return;
-        setFocused(false);
-        setPinned(false);
-      }}
+    <HoverNote
+      look="underline decoration-line-strong decoration-dotted underline-offset-4"
+      note={<WordNote row={row} />}
     >
-      <button
-        type="button"
-        aria-expanded={open}
-        onClick={() => setPinned((on) => !on)}
-        className="cursor-help underline decoration-line-strong decoration-dotted underline-offset-4"
-      >
-        {text}
-      </button>
-      {open && <WordNote row={row} />}
-    </span>
+      {text}
+    </HoverNote>
   );
 }
