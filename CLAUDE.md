@@ -72,31 +72,17 @@ pnpm dev      http://localhost:3000 — often already running; several Orca
 pnpm lint · typecheck · test · build    the steps of check, one at a time
 ```
 
-## Conventions
+## Rules
 
-How content is written: `.claude/rules/content.md`, `lessons.md`,
-`exercises.md`, `references.md`, `vocabulary.md`.
+The rest lives in `.claude/rules/`, a file per subject. The paths each one
+covers are in its front matter; the list is here so a session knows a rule
+exists before it opens a file that would load it.
 
-1. Code is TSX. Structure is read from the source, never duplicated:
-   navigation, summary, rules and hints come from the tags in the .mdx, via
-   `lib/lessons.ts`.
-2. Colours go through the tokens in `app/globals.css`; no palette classes
-   (`zinc-500`), no `dark:` variants. Each token is a `light-dark()` pair,
-   and `color-scheme` picks the half.
-3. Type: headings `font-display`, labels `eyebrow`, numbers and verb forms
-   `font-mono`. Cards are `card`; tables, segmented controls and search
-   fields come from the shared components, not from copied classes.
-4. A component that holds state is a client component with one job;
-   everything else is a server component. State never leaves the exercise it
-   belongs to.
-5. Comments explain why, not what; a prop's doc comment says what it is for.
-   A new kind of content gets its section in the `.claude/rules/` file for
-   the files it is written in.
-6. A lesson's status drives behaviour: `done` shows answers, anything else
-   opens blank. New behaviour keyed to status goes through the lesson
-   context.
-
-Commits, branches and pushes: `.claude/rules/git.md`.
+- Always: `git.md` (commits, branches, pull requests), `decisions.md`.
+- Content: `content.md`, `lessons.md` (with the formats a lesson can take),
+  `exercises.md`, `references.md`, `vocabulary.md`.
+- Code: `typescript.md`, `components.md`, `styling.md`, `nextjs.md`, and
+  `debt.md` for what was left alone on purpose.
 
 ## Where things stand
 
@@ -129,18 +115,3 @@ Live as GitHub Issues with the `idea` label (`gh issue list --label idea`),
 not as files in this tree: a thought for the future should not need a commit
 to change. Each names its trigger — the condition under which it becomes
 worth building.
-
-## Known debt
-
-Reviewed and left alone on purpose. Fix each when its trigger arrives, not
-before — and when you are in that file anyway, take it with you.
-
-- **Lesson metadata without compiling the MDX.** `getLessons` imports every
-  lesson to read its `metadata`, which compiles the whole file. Trigger: the
-  build of the home page gets slow, around ten lessons, or a page needs every
-  lesson's metadata but no content (tags, filters). Then read `metadata` from
-  the source in `lib/lesson-source.ts`, as the tags already are.
-- **The two-meaning branch in `components/verb-patterns.tsx`.** A search that
-  mixes plain rows with two-meaning rows uses a `colSpan` branch that is hard
-  to read. Trigger: any other change to that component. Then render three
-  columns always and drop the branch.
