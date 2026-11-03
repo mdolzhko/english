@@ -24,6 +24,10 @@ is made that a later session might reopen, it is added here.
   groups, notes and exercises.
 - **A lesson's `done` status shows the answers; `todo` hides them.** One
   switch, no second set of content.
+- **A `<Gap>` carries every option the original offered, not only the
+  answer.** The options are what makes a gap a choice to try, and the same
+  list is what saved answers and a link showing the teacher what was picked
+  will need (issue #1) — without touching a content file again.
 - **Vocabulary is grouped by the day it was added, not paginated.** A page
   number says nothing about what is on it; a date and a source name the
   handful of words worth reviewing together. Search spans every group.

@@ -33,7 +33,8 @@ app/               routes: the lesson list, /lessons/[slug], /[reference]
 components/        what content files use (registered in mdx-components.tsx), and page parts
 lib/               pure logic — loading content through guards, the source parser,
                    hints, the vocabulary index — with tests beside it
-README.md          how to write content, a section per feature
+.claude/rules/     how each kind of file is written; a rule loads with the files it covers
+README.md          what the site is and how to run it
 ```
 
 ## Workflow
@@ -70,31 +71,27 @@ pnpm lint · typecheck · test · build    the steps of check, one at a time
 
 ## Conventions
 
-1. Content is MDX, code is TSX. A lesson or reference is one file in
-   `content/`; it never imports anything — components are registered in
-   `mdx-components.tsx`.
-2. Metadata lives in the content file (`export const metadata`); data too
-   (`verbs`, `groups`). Nothing about a lesson is hard-coded in `app/`.
-3. Structure is read from the source, never duplicated: navigation, summary,
-   rules and hints come from the tags in the .mdx, via `lib/lessons.ts`.
-4. Any `<Gap>` or `<Pair>` sits on one physical line, because a tag alone on a
-   line becomes a block in MDX and splits the sentence.
-5. Attribute text (`hint`, `gist`, `instruction`) uses curly quotes ’ “ ” and
-   never a straight `"` or a `>`; the source parser is a regex.
-6. Colours go through the tokens in `app/globals.css`; no palette classes
+How content is written: `.claude/rules/content.md`, `lessons.md`,
+`exercises.md`, `references.md`, `vocabulary.md`.
+
+1. Code is TSX. Structure is read from the source, never duplicated:
+   navigation, summary, rules and hints come from the tags in the .mdx, via
+   `lib/lessons.ts`.
+2. Colours go through the tokens in `app/globals.css`; no palette classes
    (`zinc-500`), no `dark:` variants. Each token is a `light-dark()` pair,
    and `color-scheme` picks the half.
-7. Type: headings `font-display`, labels `eyebrow`, numbers and verb forms
+3. Type: headings `font-display`, labels `eyebrow`, numbers and verb forms
    `font-mono`. Cards are `card`; tables, segmented controls and search
    fields come from the shared components, not from copied classes.
-8. A component that holds state is a client component with one job;
+4. A component that holds state is a client component with one job;
    everything else is a server component. State never leaves the exercise it
    belongs to.
-9. Comments explain why, not what; a prop's doc comment says what it is for.
-   A README section per feature says how to write content for it.
-10. A lesson's status drives behaviour: `done` shows answers, anything else
-    opens blank. New behaviour keyed to status goes through the lesson
-    context.
+5. Comments explain why, not what; a prop's doc comment says what it is for.
+   A new kind of content gets its section in the `.claude/rules/` file for
+   the files it is written in.
+6. A lesson's status drives behaviour: `done` shows answers, anything else
+   opens blank. New behaviour keyed to status goes through the lesson
+   context.
 
 Commits, branches and pushes: `.claude/rules/git.md`.
 
@@ -111,16 +108,10 @@ Updated at the end of a session that changes it. Last: 2026-11-03.
   completed by the owner, with every article marked by its rule through
   `<Marked>`; the quiz is Lucy’s and still to do.
 - Vocabulary: three days of words so far, from the motorcycle story and
-  Exercise 1, in kinds (words, verbs, phrasal verbs, set expressions…).
-  The owner sends words in batches after lessons; each batch becomes a group
-  dated that day, `[word, translation, example]` per row. A word already
-  in the list is not repeated; its row gets the new note instead.
-  Examples are taken from the exercise text where the word occurs in it.
+  Exercise 1 of the past tenses lesson.
 - Past tenses, Exercise 5 is the teacher's text: all 30 sentences
   translated, 16–30 not yet checked by the teacher. Exercises 1–4 are
-  ten-sentence sets; 1 is translated, 2–4 not yet. The owner translates them
-  and sends the English to be inserted with the verb form in brackets and a
-  `rule`.
+  ten-sentence sets; 1 is translated, 2–4 not yet.
 - Conditionals: the answers in all 70 gaps were worked out from the rules,
   not taken from test-english's key, which the site does not show. The status
   becomes `done` once the owner has worked through it.
