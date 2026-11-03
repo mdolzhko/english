@@ -95,10 +95,8 @@ pnpm lint · typecheck · test · build    the steps of check, one at a time
 10. A lesson's status drives behaviour: `done` shows answers, anything else
     opens blank. New behaviour keyed to status goes through the lesson
     context.
-11. Commits are one theme each, imperative mood, body says why. Nothing is
-    committed or pushed until the owner asks; authorship is the personal
-    account (`mdolzhko`), set in the local git config.
-12. Before committing: `pnpm check` (lint, types, tests and the build).
+
+Commits, branches and pushes: `.claude/rules/git.md`.
 
 ## Where things stand
 
