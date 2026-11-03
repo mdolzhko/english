@@ -112,10 +112,16 @@ Settled, with the reason, so they are not reopened by accident.
 
 ## Where things stand
 
-Updated at the end of a session that changes it. Last: 2026-10-20.
+Updated at the end of a session that changes it. Last: 2026-11-03.
 
 - Lessons: Auxiliary verbs (done), Past tenses (in progress), Conditionals
-  (to do). References: Irregular verbs, Verb patterns, Vocabulary.
+  (to do), The definite article (in progress). References: Irregular verbs,
+  Verb patterns, Vocabulary.
+- The definite article: notes from English with Lucy’s PDF *Everything to
+  know about ‘the’*, which is not online (Max has the file), regrouped into
+  six cards with a `<Rule>` per case. Exercise 1 is the teacher’s, completed
+  by Max, with every article marked by its rule through `<Marked>`; the
+  quiz is Lucy’s and still to do.
 - Vocabulary: three days of words so far, from the motorcycle story and
   Exercise 1, in kinds (words, verbs, phrasal verbs, set expressions…).
   Max sends words in batches after lessons; each batch becomes a group
