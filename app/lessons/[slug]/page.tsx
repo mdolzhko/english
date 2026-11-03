@@ -5,6 +5,7 @@ import { LessonNav } from "@/components/lesson-nav";
 import { LessonSummary } from "@/components/lesson-summary";
 import { LessonProvider } from "@/components/lesson-context";
 import { StatusBadge } from "@/components/status-badge";
+import { formatSource } from "@/lib/format-source";
 import { formatLessonDate, getLesson, getLessonSlugs } from "@/lib/lessons";
 import { getWordIndex } from "@/lib/vocabulary";
 
@@ -70,7 +71,7 @@ export default async function LessonPage({
               target="_blank"
               rel="noreferrer noopener"
             >
-              test-english.com
+              {formatSource(lesson.source)}
             </a>
           </p>
         )}

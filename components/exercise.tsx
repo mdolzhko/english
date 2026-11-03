@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { formatSource } from "@/lib/format-source";
 
 /**
  * One numbered exercise. `id` and `title` are what the page's side
@@ -58,7 +59,7 @@ export function Exercise({
             rel="noreferrer noopener"
             className="text-accent underline underline-offset-2"
           >
-            test-english.com
+            {formatSource(source)}
           </a>
         </p>
       )}
