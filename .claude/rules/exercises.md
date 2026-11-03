@@ -44,6 +44,15 @@ not help. Long lines are the price.
   shows that rule’s hint.
 - With neither `options` nor `answer`, a gap is a plain blank.
 
+## Quiz
+
+A question followed by a `<Gap>` whose options are the answers — `True` and
+`False`, or whole sentences when the question is which one is correct:
+
+```mdx
+<Item><Turn>Use ‘the’ before an initialism. <Gap rule="organisations" answer="True" options={["True", "False"]} /></Turn></Item>
+```
+
 ## Translations
 
 The homework is the owner’s: never translate it. Set the text up first, one

@@ -48,6 +48,9 @@ README.md          what the site is and how to run it
   something behaves, or could reasonably be done more than one way. A trivial
   fix — a typo, a wrong class, a one-line bug with one obvious answer — is
   made right away.
+- A new lesson starts with its formats — cards or plain sections, gaps,
+  translation, quiz… Read the list in `.claude/rules/lessons.md` and agree
+  with the owner which to use, or a new one, before writing anything.
 - The homework is the owner’s. Never translate or complete an exercise for
   them: set up the empty sentences, then insert and mark up what they send.
 - Logic in `lib/` is written test first: a failing test, then the code.

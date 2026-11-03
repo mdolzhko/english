@@ -21,6 +21,35 @@ export const metadata = {
 };
 ```
 
+## Formats
+
+A lesson is built from formats, chosen with the owner when the lesson is
+planned: which of these to use, or a new one. None is required and the list
+is not closed — a new format is added here once it exists.
+
+Notes:
+
+- **Cards** — a numbered `<Topic>` per idea with `<Rule>`s inside, and a
+  summary of the cards above the notes. For theory that will be looked up.
+- **Sections** — plain `## Topic`, `## Task` and `## My answers`: the notes
+  from the lesson, the task as the teacher set it, and the owner’s answers in
+  whichever exercise format fits. The side navigation lists the headings;
+  there is no summary.
+
+Exercises, each written as `exercises.md` says:
+
+- **Gaps** — pick the right option in a sentence.
+- **Translation** — a Ukrainian text, sentence by sentence, with the owner’s
+  English under each.
+- **Marked sentences** — finished English sentences with the rule behind
+  every article.
+- **Quiz** — questions answered by picking an option: true or false, or
+  which sentence is correct.
+- **Dialogue** — a conversation with numbered gaps.
+
+Formats mix: the definite article lesson has cards, marked sentences and a
+quiz.
+
 ## Status
 
 The status drives behaviour. In a `done` lesson every `<Gap>` opens on its
@@ -31,7 +60,8 @@ worked through it. Behaviour keyed to status goes through the lesson context
 
 ## Cards
 
-The notes are numbered cards, one per idea, all before the exercises:
+In the cards format the notes are numbered cards, one per idea, all before
+the exercises:
 
 ```mdx
 <Topic
@@ -65,10 +95,10 @@ Paragraphs, examples, `<Rule>`s, `<Chart>`s and `<Note>`s.
   quotes ’ “ ” and never a straight `"` or a `>`: the source is read by a
   regex in `lib/lesson-source.ts`, which stops at either.
 
-## From a source to a lesson
+## A new lesson
 
-`status: "todo"`, one `<Topic>` per idea with the source’s examples, a
-`<Chart>` for the form, `<Note>`s for the traps, then the exercises (see
-`exercises.md`), every gap with its answer and a `rule`. Where the source
-hides its answer key, work the answers out from the rules and say so in
-“Where things stand”.
+Plan it first and agree its formats with the owner. Then `status: "todo"`;
+with cards, one `<Topic>` per idea with the source’s examples, a `<Chart>`
+for the form and `<Note>`s for the traps; the exercises after the notes,
+every gap with its answer and a `rule`. Where the source hides its answer
+key, work the answers out from the rules and say so in “Where things stand”.

@@ -9,9 +9,12 @@ is made that a later session might reopen, it is added here.
 - **Translation exercises are sentence pairs, not tabs.** Tabs break the pair:
   to check sentence 7 you would jump between tabs. Practice mode hides the
   English per sentence instead.
-- **Topic cards, not `##` headings.** Each idea is a numbered card with the
-  construction as a chip, the way the review documents the owner likes are
-  laid out; the summary above the notes is built from the cards.
+- **Cards for theory; plain sections stay a format.** Each idea of the theory
+  is a numbered card with the construction as a chip, the way the review
+  documents the owner likes are laid out; the summary above the notes is
+  built from the cards. A lesson that is mostly one task can still be plain
+  `## Topic`, `## Task`, `## My answers`: formats are chosen per lesson, with
+  the owner, when it is planned.
 - **Reference pages are not lessons.** Irregular verbs and verb patterns are
   looked up more often than any lesson, so they sit in the header, not in the
   lesson list, and have no status or date.
