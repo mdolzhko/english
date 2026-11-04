@@ -49,6 +49,10 @@ is made that a later session might reopen, it is added here.
   element.** `transition` on `*` started 952 colour transitions on the
   vocabulary page and a 32 ms style recalculation up front, which looked
   like a jolt; the View Transitions API blends two snapshots instead.
+- **The site is not for crawlers.** It is for the owner and the teacher.
+  `robots.txt` asks every bot not to fetch it, and `noindex` covers a page
+  one fetches anyway. Both are requests; only a password would be a lock,
+  and two readers have not needed one.
 - **The navigation is tabs under the title, stuck to the top.** Three
   references beside the title no longer fit on a phone; the tabs come from
   the reference files, so a new page needs no code.
