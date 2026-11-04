@@ -3,7 +3,8 @@
 A static Next.js site: lesson notes, homework and reference pages, one MDX
 file each. This file is read at the start of every session. The rules in
 `.claude/rules/` add to it: those without `paths` at the start too, the
-others when a file under their paths is read.
+others when a file under their paths is read. The words for the parts of
+the site are defined in @CONTEXT.md, loaded with this file; use them.
 
 ## Purpose
 
@@ -17,7 +18,7 @@ and to check the owner’s texts. Nothing else should land on the teacher.
 Homework follows two patterns — translate a Ukrainian text into English, or
 fix an English text by picking the right option — and they map to
 `<Translation>` and `<Gap>`. There is no fixed shape for the finished site;
-the one direction is accumulating theory with exercises per topic. Add
+the one direction is accumulating theory with exercises per lesson. Add
 structure when a real inconvenience of either reader calls for it, not
 before.
 
@@ -39,6 +40,7 @@ components/        what content files use (registered in mdx-components.tsx), an
 lib/               pure logic — loading content through guards, the source parser,
                    hints, the vocabulary index — with tests beside it
 .claude/rules/     how each kind of file is written; a rule loads with the files it covers
+CONTEXT.md         the words for the parts of the site
 README.md          what the site is and how to run it
 ```
 

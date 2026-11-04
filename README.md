@@ -28,4 +28,4 @@ code as plain Markdown. `CLAUDE.md` says what the project is and how the
 work goes; `.claude/rules/` holds the rest, a file per subject — how a
 lesson, an exercise, a reference page or the vocabulary is written, how code
 and styles are, how git is used. Each rule names the paths it covers in its
-front matter.
+front matter. `CONTEXT.md` defines the words used for the parts of the site.
