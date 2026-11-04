@@ -98,11 +98,10 @@ Updated at the end of a session that changes it. Last: 2026-11-03.
 - Lessons: Auxiliary verbs (done), Past tenses (in progress), Conditionals
   (to do), The definite article (in progress). References: Irregular verbs,
   Verb patterns, Vocabulary.
-- The definite article: notes from English with Lucy’s PDF *Everything to
-  know about ‘the’*, which is not online (the owner has the file), regrouped
-  into six cards with a `<Rule>` per case. Exercise 1 is the teacher’s,
-  completed by the owner, with every article marked by its rule through
-  `<Marked>`; the quiz is Lucy’s and still to do.
+- The definite article: six cards with a `<Rule>` per case, our own
+  examples and quiz. Exercise 1 is the teacher’s, completed by the owner,
+  with every article marked by its rule through `<Marked>`; the quiz is
+  still to do.
 - Vocabulary: three days of words so far, from the motorcycle story and
   Exercise 1 of the past tenses lesson.
 - Past tenses, Exercise 5 is the teacher's text: all 30 sentences
