@@ -12,8 +12,9 @@ paths:
   (`verbs`, `groups`). Nothing about a lesson is hard-coded in `app/`.
 - Only the build reads these files: MDX is not type-checked, and lint, types
   and tests never open it. That is why `pnpm check` includes the build.
-- No names of real people (see CLAUDE.md): the owner is “the owner”, the
-  teacher “the teacher”. Characters in an exercise are fine.
+- No one involved is named (see CLAUDE.md): the owner is “the owner”, the
+  teacher “the teacher”. Characters in an exercise are fine, and so is a
+  public source the text was taken from.
 
 ## Where material comes from
 
@@ -25,6 +26,8 @@ paths:
 - Anything else arrives as a file — a PDF, a screenshot — and the owner
   gives its path; Read it there. Search for it online first: if it is
   there, `source` links to it.
-- Whatever the source, the notes are written in our own words and regrouped
-  for looking up; short examples may be kept. `source` in the metadata says
-  where it came from.
+- The notes are written in our own words and regrouped for looking up. When
+  the source’s own text stays — its examples, its exercises — `source` in
+  the metadata links to it; when everything is rewritten with our own
+  examples, the source needs no mention. The original file — a PDF, a
+  screenshot — never goes into the repository.

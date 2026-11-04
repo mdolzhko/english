@@ -21,8 +21,13 @@ the one direction is accumulating theory with exercises per topic. Add
 structure when a real inconvenience of either reader calls for it, not
 before.
 
-The repository is public, so it holds no names of real people and no
-account but `mdolzhko`: not the owner’s name, not the teacher’s, no email.
+The repository is public, so it names no one involved — not the owner, not
+the teacher — and no account but `mdolzhko`, no email.
+
+A source whose text is used here — its exercises, its examples — is linked
+in `source`, as test-english.com is. What is rewritten in our own words, with
+our own examples, needs no mention. The original file never goes into the
+repository.
 
 ## Map
 
