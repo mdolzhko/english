@@ -93,7 +93,7 @@ exists before it opens a file that would load it.
 
 ## Where things stand
 
-Updated at the end of a session that changes it. Last: 2026-11-03.
+Updated at the end of a session that changes it. Last: 2026-11-04.
 
 - Lessons: Auxiliary verbs (done), Past tenses (in progress), Conditionals
   (to do), The definite article (in progress). References: Irregular verbs,
@@ -112,8 +112,14 @@ Updated at the end of a session that changes it. Last: 2026-11-03.
   becomes `done` once the owner has worked through it.
 - The Ukrainian translations in both reference pages have not been reviewed
   by the owner.
-- Not deployed. When it is: Vercel from the browser under the personal
-  account — the local CLI is logged into the work account.
+- Deployed on Vercel under the personal account, from `main`: every merge
+  goes live. It was connected in the browser, because the local CLI is
+  logged into the work account. The address is not written here — the
+  site is for two readers, and this file is public.
+- Open question to the teacher: how they would like to check the owner’s
+  texts — a tick per sentence, a comment per sentence, something else — and
+  whether they would rather add tasks themselves. The answer shapes issue #1
+  and goes there as a comment.
 
 ## Ideas for later
 
